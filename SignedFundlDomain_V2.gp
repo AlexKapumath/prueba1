@@ -3,8 +3,8 @@
 /*******************************************************************************************************************************/
 /* The subject here is establish an algorirthm to determine a SIGNED fundamental domain for non-complex number fields. */
 /* This is based in the works of Diaz y Diaz, Espinoza and Friedman:                                                   */
-/* Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)                         */
-/* Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)                            */
+/* Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014) [MR4105945]             */
+/* Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020) [MR3198753]                */
 
 
 \p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
