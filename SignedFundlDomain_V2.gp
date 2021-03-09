@@ -7,7 +7,7 @@
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 
 
-/*\p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. */
+\p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
 /***********************************************************************************************************************/
 /*****************************************************************************/
 /*                                                                           */
