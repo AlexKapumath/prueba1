@@ -7,7 +7,7 @@
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 
 
-\p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
+/*\p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. */
 /***********************************************************************************************************************/
 /*****************************************************************************/
 /*                                                                           */
@@ -137,7 +137,7 @@ return(R);
 }
 
 /*Representation of totally positive elements in a totally real number field k into the logarithm space R^{n-1}  */
-/*** INPUT: d=bnfinit(polynomial) data of a totally real number field K=Q(theta) given; S=list of totally positive elements in K_+ */
+/*** INPUT: d=bnfinit(polynomial) data of a TOTALLY REAL number field K=Q(theta) given; S=list of totally positive elements in K_+ */
 /*** OUTPUT: Representation in the logarithm space R^(n-1) of each element in S */ 
 
 rpl(S,d)=  \\ only of K is totally real!
