@@ -6,7 +6,7 @@
 /* [DDF14] Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    */
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 
-
+allocatemem(10^9);
 \p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
 /***********************************************************************************************************************/
 /*****************************************************************************/
@@ -323,7 +323,7 @@ if(r2>0,
     for(j=1,r2,v1=concat(v1,[exp(2*Pi*I*X[j]/3),exp(-2*Pi*I*X[j]/3)]));
     v=concat(vector(r1,i,1),v1)~;          \\ vector in R_+^{r1}x(C^*)^{2*r2}.
     w1=matsolve(M,v);
-    w1=bestappr(w1,5);                     \\ the best approx. rational of w1, whose denominator is limited by 100
+    w1=bestappr(w1,100);                     \\ the best approx. rational of w1, whose denominator is limited by 100
     a=vecsum(vector(n,i,Vec(w1)[i]*B[i]));  \\ element in k
     a1=Vec(conjvec(Mod(a,p)));
     a2=concat(vector(r1,j,sign(a1[j])),vector(r2,j,sign(abs(a1[r1+2*j-1])))); \\ a2 contains the signs of the places in R^{r1}xC^{r2}.
