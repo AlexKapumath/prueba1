@@ -1,8 +1,8 @@
 
-/* Updated 2021, March 09 */
+/* Updated 2021, March 14 */
 /********************************************************************************************************************************************/
 /* The subject here is determine Shintani fundamental domains for non-totall complex number fields */
-/* From the signed domains obtained by the works of Diaz y Diaz, Espinoza and Friedman (now implemented in archive "SignedFundlDomain_V2.gp")*/
+/* from the signed domains obtained by the works of Diaz y Diaz, Espinoza and Friedman (now implemented in "SignedFundlDomain_V2.gp")*/
 /* The works of Diaz y Diaz, Espinoza and Friedman are:                                                   */
 /* [DDF14] Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    */
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
@@ -10,13 +10,19 @@
 /* generators (or V-representation). For this we use the work of Fukuda and Prodon:     */
 /* [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  */
   
-/*---------------------- Global variables ------*/
-\\HV.rays=HV[1];
-\\HV.ineqs=HV[2];
 
+/*---------------------- Global variables ------*/
+fudom.data=fudom[1]; \\ this is [p, K.disc, U, [a,b], [a1,b1], S, #S] given in the function "fudom()"
+fudom.truefund=fudom[2][2][2];  \\ this is the list of full-dimensional rational cones that defines a TRUE fundl domain 
+fudom.ngcones=fudom[2][1][1]; \\ negative cones initial given by algorithm in "SignedFundlDomain_V2.gp"
+fudom.pscones=fudom[2][1][2]; \\ positive cones initial
+fudom.timetruefd=fudom[3];    \\ time in miliseconds to obtain a true fundamental domain from a signed one given
+fudom.timesignedfd=fudom[4];  \\ time in miliseconds to obtain a signed fundamental domain
 #
 allocatemem(10^9);
-\p 600  \\ realprecision = 616 significant digits (600 digits displayed).
+\p 600     \\ realprecision = 616 significant digits (600 digits displayed).
+
+
 /********************************************************************************************************************************************/
 /*****************************************************************************/
 /*                                                                           */
@@ -24,73 +30,75 @@ allocatemem(10^9);
 /*                  for a number field given.                                */
 /*                                                                           */
 /*****************************************************************************/
-/* Given "p" a irreducible polynomial over Q, which define a number field K=bnfinit(p)=Q(theta) */
-
-/*** INPUT: W=[p,U]; where p=K.pol; U=topu(K) generator of the group of the totally positive units (see function "topu()" below)  */
-/*** For the generator e_1,...,e_r of the group U, where r=r1+r2-1 (rank of U). */
-/*** The finite set : expn=lista(r,l) represent the r-tuples of the exponents of units in U (see function "lista()" below) */
+/*** Given "p" a irreducible polynomial over Q, which define a number field K=bnfinit(p)=Q(theta) */
+/*** For the generator e_1,...,e_r of the group U of totally positive units, where r=r1+r2-1 (rank of U). */
+/*** The finite set : V=lista(r,l) considered in this algorithm below represent the r-tuples of the exponents of units in U */
 /*** That is, for each [a_1,...,a_r] (a_j integers) we have that the product (e_1)^(a_1)*....(e_r)^(a_r) belongs to U */
 /*** and l is a natural number fixed such that the sum |a_1|+...+|a_r| is less than or equal to l.*/
+/*** Here we only considere "l=5" which is sufficient to fields of degree less than or equal to 7, probably we need to take a value more greater than 5 for fields of degree >7, this also depends of number of negatives cones in a SIGNED fundamental domain.*/
 
-/*** OUTPUT: [G,D,t1] data of a possible true fundamental domain for K */
-/*** where G=[p,K.disc,U,[a,b], [a1,b1], V, S, #S, #expn] */
-/*** [a,b]=[#Initial of Negative Cones,#Initial of Positive Cones */
+/*** INPUT: W=[p,U]; where p=K.pol; U=topu(K) generator of the group of the totally positive units (see function "topu()" below)  */
+
+/*** OUTPUT: [G,D,t1,t2] data of a possible true fundamental domain for K */
+/*** where G=[p, K.disc, U, [a,b], [a1,b1], S, #S] */
+/*** [a,b]=[#Initial of Negative Cones, #Initial of Positive Cones] */
 /*** In all process, we only consider n-dimensional cones ignoring lower-dimensional cones (n=[K:Q] its extension degree)*/
 /*** [a1,b1]=[#Final of Negative Cones after remove some cones,#Final of Positive Cones after remove some cones] */
 /*** IF a1=0, then we have "b1" n-dimensional rational polyhedral cones as a TRUE fundamental domain together with some proper faces*/
-/*** V=expn if a1!=0, otherwise V=[] */
-/*** S subset of "expn" of units used to remove the common intersection between interiors of negative and positive cones */
-/*** D=[G,[N0,P0],[N1,P1]] */
+/*** S subset of "lista(r,5)" of units used to remove the common intersection between interiors of negative and positive cones */
+/*** D=[[N0,P0],[N1,P1]] */
 /*** where N0=list initial of negative cones and P0=list initial of positive cones */
-/*** N1=list obtained of negative cones after of use units in V */
-/*** P1=list obtained of positive cones after of use units in V */
-/*** If N1=[](empty) then the cones in P1 form a true fundamental domain */
-/*** Each cone in P1 is of the form [[V-repres., H-repres.],w], w=vector of signs +1 or -1 indicating the facets to add at each cone */ 
-/*** t1=getwalltime()....t1=getwalltime()-t1 */
+/*** N1=list obtained of negative cones after of use units in lista(r,5) */
+/*** P1=list obtained of positive cones after of use units in lista(r,5) */
+/*** If N1=[](empty) then the cones in P1 form a TRUE fundamental domain */
+/*** Each cone in P1 is given in the form [[V-repres., H-repres.],w], where w=vector of signs +1 or -1 (see "ABoundary()" below) */ 
+/*** t1=time im miliseconds to obtain a true fundamental domain given a signed one*/
+/*** t2=time im miliseconds to obtain a signed fundamental domain */
 
-fudom(W,expn)=  
+fudom(W)=  
 {my(p,U,d,r,S,L,t1,t2,P0,N0,P,N,P1,N1,G,D,a,b,a1,b1,V,u,c,c1,h1,h2); 
 print1("Using method: Weight -->Lexic.");
 [p,U]=W;    
-r=#U;     \\ rank of U+, r=d.r1+d.r2-1;
+r=#U;            \\ rank of U+, r=d.r1+d.r2-1;
 t2=getwalltime();  
 d=bnfinit(p);    \\ data of the number field K obtained by Pari/gp
 if(d.r2>0,L=signedfd2(U,d),L=signedfd1(U,d));  \\Signed fund'l domain obtained by the algorithm given in "SignedFundlDomain_V2.gp"
 t2=getwalltime()-t2;
 a=#L[1];         \\ initial number of n-dimensional negative cones.
 b=#L[2];         \\ initial number of n-dimensional positive cones.
+V=lista(r,5);      \\ the elements are ordered by "weight" and "lexicographically", see function "lista()" below 
 t1=getwalltime();  
 P0=vector(b,i,HV(L[2][i],d)); \\ list of cones as [generators, inequalities]=[R-repres., H-repres.]
 if(a==0,         \\ means that such signed domain is a true one.
     P0=ABoundary(P0,d);         \\ Adding the facets in each cone to obtain a true fundamental domain.
-    G=[p, d.disc, U, [0,b], [0,b], [], [], 0, #expn];    \\ S=[]=empty list (since we do not need using any unit to remove negative cones).
-    D=[G,[[], P0],[[], P0]];
+    G=[p, d.disc, U, [0,b], [0,b], [], 0];    \\ S=[]=empty list (since we do not need using any unit to remove negative cones).
+    D=[L,[[], P0]];
     );        
-if(a>0,          \\ means that there is an n-dimensional NEGATIVE cone.
+if(a>0,                    \\ means that there is an n-dimensional NEGATIVE cone.
     S=[];     
     N0=vector(a,i,HV(L[1][i],d));         \\ list of cones as [R-repres, H-repres]
     N=vector(a,i,[N0[i], [N0[i]]]);       \\ Each cone is considered as [Cone=C, List of subcones asociated to C]
     P=vector(b,i,[P0[i], [P0[i]]]);   
-    V=expn;            \\ Order of units with method: Weight -->Lexic. (see "lista()" below)
     for(j=1,#V,
         u=lift(Mod(prod(i=1,r,U[i]^(V[j][i])),p));   
         [N,P,h1,h2]=SeplistCs(N,P,u,d);                    \\ separation of (lists of) cones by the unit u.        
         if(h1!=0, S=concat(S,[concat([V[j]],h1)]);print1(". "j"-th unit is used"), print1(". "j"-th unit is not used") );
-                  \\ h1!=0 (there exists some intersection in a some pair of cones), so the unit V[j] is used.
+                       \\ h1!=0 (there exists some intersection in a some pair of cones), so the unit V[j] is used.
         c=[length(l[2]) | l<-N, length(l[2])!=0];           \\ length of each non-empty list of negative cones 
         print1(". Remain remove " length(c) "--(" vecsum(c) " cones) lists of " a " lists of negative cones. ");
         c1=[length(l[2]) | l<-P, length(l[2])!=0];                 \\ length of each non-empty list of positive cones 
-        print1(". Remain " length(c1) "--(" vecsum(c1) " cones) lists of " b " lists of positive cones. ");
+        print1(" Remain " length(c1) "--(" vecsum(c1) " cones) lists of " b " lists of positive cones. ");
         if(length(c)==0, break());                          \\ if #c=0 means the interior of negatives cones have been deleting.
       );
     a1=vecsum([length(l[2]) | l<-N, length(l[2])!=0]);   \\ a1 could be different to 0 if there is another unit does not considered in "V".
     b1=vecsum([length(l[2]) | l<-P, length(l[2])!=0]);   \\ number of positive cones obtained.
-    G=[p, d.disc, U, [a,b], [a1,b1], V, S, #S, #expn];   \\ S in the set of units used in all the proccess; l=#expn.
+    G=[p, d.disc, U, [a,b], [a1,b1], S, #S];   \\ S in the set of units used in all the proccess; l=#expn.
     N1=[]; for(j=1,a, N1=concat(N1,N[j][2])); 
     P1=[]; for(j=1,b, P1=concat(P1,P[j][2])); 
-    P1=ABoundary(P1,d);      \\ Adding which facets of each cone to obtain a true fundamental domain.
-    D=[G,[N0,P0],[N1,P1]];   \\ if in N1 is empty (i.e. N1 has not negative cones) then P1 is a true fundamental domain (with some boundaries)
+    P1=ABoundary(P1,d);    \\ Adding which facets of each cone to obtain a true fundamental domain.
+    D=[L,[N1,P1]];         \\ if in N1 is empty (i.e. N1 has not negative cones) then P1 is a true fundamental domain (with some boundaries)
     );
+if(G[5][1]==0,print1(" A true fund'l domain have been obtained with " G[5][2] " " d.r1+2*d.r2"-dimensional cones."), warning("the domain obtained is still signed, you need to change the function lista(r,5) by lista(r,l) taking some l>5."));
 t1=getwalltime()-t1;
 return([G,D,t1,t2]); 
 }
@@ -107,39 +115,36 @@ return([G,D,t1,t2]);
 /* Given a list of irreducible polynomials "p" of degree n (fixed), so for each "p" defines a number field K=bnfinit(p)=Q(theta) */
 
 /*** INPUT: A list "v" whose elements are of the form [irredu. polynomial p degree n, generators of the totally positive units group in K] */ 
-/*** and expn=lista(r,l) the same set as the algorithm above. */
-/*** In this routine we consider a limit time on seconds ("sec") to obtain a (posible) fundamental domain in each number field */
+/*** In this routine we consider a limit time on seconds ("sec") to obtain a possible TRUE fundamental domain in each number field */
 
-/*** OUTPUT: Write an archive with a data for each (posible) fundamental domain of each number field in the form: */
+/*** OUTPUT: Write an archive with a data for each (possible) fundamental domain of each number field in the form: */
 /*** for each number field we determine a tuple [G,t1,t2] */  
-/*** G=[p,d.disc,U,[#N0,#P0],[#N1,#P1],V,S,#S] */
-/*** t1 and t2 are time on miliseconds (see description below).*/
+/*** G=[p,d.disc,U,[#N0,#P0],[#N1,#P1],S,#S] */
+/*** where G were descrited above. */
 
 
-fundaldomains(v,expn,sec)=
+fundaldomains(v,sec)=
 {\\my(F,G,D,v,t,t1,V);
 write(Bfields1,"\\\\ Here we have a list [number fields,[fundamental units]] such that has NOT obtained its fundamental domain after of ", sec , " seconds.");
 write(Bfields1,"");
-write(timeFDs1, "\\\\",system(date));
 write(timeFDs1, "\\\\ Each vector below is of the form:");
-write(timeFDs1, "\\\\ [j,[p,d.disc,U,[#N0,#P0],[#N1,#P1],V,S,#S],t1,t2], where");
+write(timeFDs1, "\\\\ [j,[p,d.disc,U,[#N0,#P0],[#N1,#P1],S,#S],t1,t2], where");
 write(timeFDs1, "\\\\ p=irreduc. polynomial given; d.disc=discriminant of K; U=generators of the totally positive units group;");
 write(timeFDs1, "\\\\ [#N0,#P0]=[#negative cones initial,#positive cones initial];");
 write(timeFDs1, "\\\\ [#N1,#P1]=[#negative cones obtained,#positive cones obtained];");
-write(timeFDs1, "\\\\ V=expn if #N0!=0, otherwise V=[];");
-write(timeFDs1, "\\\\ S subset of "expn" of units used to remove the common intersection between interiors of negative and positive cones and if #N1==0 implies that we have a true fundamental domain;");
+write(timeFDs1, "\\\\ S subset of "lista(r,5)" of units used to remove the common intersection between interiors of negative and positive cones; S=[] if #N1==0 which implies that such signed domain is a true one;");
 write(timeFDs1, "\\\\ #S=order of S;");
 write(timeFDs1, "\\\\ j=position on the list given; t1=time on milseconds to obtain true fundl domain.");
 write(timeFDs1, "\\\\ t2=time on milseconds to obtain a SIGNED fund'l domain established in SignedFundlDomain_V2.gp");
 write(timeFDs1, "");
 write(timeFDs1, "\\\\ Each fundamental domain is obtained in at most ", sec, " seconds.");
 write(timeFDs1, "");
-write(timeFDs1, "\\\\ Here we use the method-1: Weight ---> Lexicographic.");
+write(timeFDs1, "\\\\ Here we use the method-1: Weight ---> Lexicographic to order the units, see  function lista(r,l).");
 write(timeFDs1, "");
 ell=0; ell1=0;
 for(j=1,#v,
    tiem1=getwalltime();
-   Fund=alarm(sec,fudom(v[j],expn));
+   Fund=alarm(sec,fudom(v[j]));
    if(type(Fund)=="t_ERROR",  write(Bfields1,"",v[j],"");ell=ell+1 , 
       [Gru,Dom,tim,tim0]=Fund;
       write(timeFDs1,"",[j,Gru,tim,tim0],""); ell1=ell1+1;
@@ -147,9 +152,9 @@ for(j=1,#v,
    print1([[j],getwalltime()-tiem1]); 
  );
 write(Bfields1, "");
-write(Bfields1, "\\\\ There exist ", ell, " number fields.");
+write(Bfields1, "\\\\ For ", ell, " number fields such a TRUE domain has not been obtained.");
 write(timeFDs1, "");
-write(timeFDs1, "\\\\ There exist ", ell1," number fields.");
+write(timeFDs1, "\\\\ A true domain has been obtained for ", ell1," number fields.");
 }
 
 
@@ -640,12 +645,12 @@ return(A); \\ represent the closure of the P\(gN1,gN2,...,gNr) as a list of subc
 /*** INPUT: L is a list of rational cones with R-repr. and H-repr. */
 
 /*** OUTPUT: Return the same list L with a vector of sign in each cones which */ 
-/*** represented by "+1" if part of the facet is added in the cone given and the sign "-1" otherwise   */
+/*** represented by "+1" if a part of the facet is added in the cone given and the sign "-1" otherwise   */
 
 ABoundary(L,d)=      \\ L=list of cones with both representations [R.repre, H.repre]
 {my(p,P,v);
 p=d.pol;
-print1(" Adding boundary to fundamental domain...");
+print1(" Adding boundary ...");
 for(j=1,#L,
     P=L[j];      \\ P=[R.repre, H.repre]                 
     v=vector(#P[2],i,sign(conjvec(Mod(P[2][i],p))[1]));  
