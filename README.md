@@ -9,3 +9,12 @@ Here we give an algorithm to obtain a TRUE fundamental domain from a SIGNED fund
  
  [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  
 
+In archive "SignedFundlDomain_V2.gp" we implement the signed domains given in [DDF14] (for totally real fields) [EF20] (for all the non-totally complex fields).
+  
+  For example: (in Pari/GP)
+    % dsf
+    % dsf
+
+
+
+
