@@ -15,14 +15,24 @@ For example: (in Pari/GP)
 
 ? p=x^4 - 5*x^2 + 3;
 
-? K=bnfinit(p); \\ data of Pari/GP
+? K=bnfinit(p); \\\\ data of Pari/GP
 
-? U=topu(K)    \\ generators of the totally positives unit group of K  
+? U=topu(K)    \\\\ generators of the totally positives unit group of K  
 
-U=[x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1]
+% U=[x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1]
+
+? SF=signedfd1(U,K);
+
+[[1, 5], 14]     \\\\ there exist 1 negative cone and 5 positive cones
+
+? SF.ngcones 
+
+% = [[1, x^2 + 2*x + 1, -x^3 + 3*x^2 + 2*x - 1, -10*x^3 + 23*x^2 + 7*x - 16]]
+
+? SF.pscones 
+
+% = [[1, x^2 + 2*x + 1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, x^2 - 2*x + 1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, x^2 - 2*x + 1, -9*x^3 + 19*x^2 + 6*x - 13, -10*x^3 + 23*x^2 + 7*x - 16], [1, -x^3 + 2*x^2 + x - 1, -x^3 + 3*x^2 + 2*x - 1, -10*x^3 + 23*x^2 + 7*x - 16], [1, -x^3 + 2*x^2 + x - 1, -9*x^3 + 19*x^2 + 6*x - 13, -10*x^3 + 23*x^2 + 7*x - 16]]
 
 ?
-
-
 
 
