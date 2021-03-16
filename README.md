@@ -16,6 +16,7 @@ For example: (in Pari/GP)
 ? K=bnfinit(p); \\ data of Pari/GP
 ? U=topu(K)    \\ generators of the totally positives unit group of K  
 U=[x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1]
+?
 
 
 
