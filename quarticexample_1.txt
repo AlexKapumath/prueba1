@@ -1,0 +1,66 @@
+
+/********************************************************************************************************/
+/* Here, we give an example of the implementation to obtain a true fundamental domain from a signed one */
+/* For a totally real quartic field number */
+
+
+? p=x^4 - 5*x^2 + 3;
+
+? K=bnfinit(p); \\ given by Pari/GP
+
+? U=topu(K)     \\ generators of the totally positives unit group of K
+
+% =[x^2 + 2x + 1, x^2 - 2x + 1, -x^3 + 2*x^2 + x - 1]
+
+? SF=signedfd1(U,K);  \\ routine given in "SignedFundlDomain_V2.gp"
+
+[[1, 5], 14]    \\ there exist 1 negative cone and 5 positive cones
+
+? SF.negcones   \\ list of negative cones given by their generators 
+
+% = [[1, x^2 + 2x + 1, -x^3 + 3x^2 + 2x - 1, -10x^3 + 23x^2 + 7x - 16]]  
+
+? SF.poscones     \\ list of negative cones given by their generators
+
+% = [[1, x^2 + 2x + 1, 3x^2 - 2, -10x^3 + 23x^2 + 7x - 16], [1, x^2 - 2x + 1, 3x^2 - 2, -10x^3 + 23x^2 + 7x - 16], [1, x^2 - 2x + 1, -9x^3 + 19x^2 + 6x - 13, -10x^3 + 23x^2 + 7x - 16], [1, -x^3 + 2x^2 + x - 1, -x^3 + 3x^2 + 2x - 1, -10x^3 + 23x^2 + 7x - 16], [1, -x^3 + 2x^2 + x - 1, -9x^3 + 19x^2 + 6x - 13, -10x^3 + 23x^2 + 7x - 16]]
+
+
+? F=fudom([p,U]); \\ routine given a "fundomain_V9-1.gp" to obtain a TRUE fundamental domain from a SIGNED one, here F has 4 elements
+
+?  F.data   \\ F.data=F[1]=[p, K.disc, U, [a,b], [a1,b1], S, #S] (described in "fundomain_V9-1.gp")
+
+% = [x^4 - 5*x^2 + 3, 8112, [x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1], [1, 5], [0, 8], [[[0, 0, 0], 2], [[-1, 0, 0], 2]], 2]
+
+\\ F[2]=[list of cones that define a signed fundamental domain, a true fundamental domain]
+? F.ngcones \\ it is F[2][1]=list of negative cones
+? F.pscones \\ it is F[2][2]=list of positive cones
+
+? #F.truefund \\ number of 4-dimensional rational cones that define a true fundamental domain after of remove the negative cone
+% = 8
+
+? F.truefund[1] \\ first cone given as [[V-represent., H-represent.], vector of signs +1 or -1 in relation to parts some of its boundary]
+
+% = [[3*x^2 - 2, 1, -10*x^3 + 23*x^2 + 7*x - 16, 42*x^2 + 78*x + 37], [86*x^3 + 26*x^2 - 345*x - 65, 755*x^3 - 660*x^2 - 3259*x + 2820, -5*x^3 + 19*x, -155*x^3 + 667*x], [-1, 1, 1, -1]]
+
+? F.truefund[2]  \\ second cone
+% = [[42*x^2 + 78*x + 37, x^2 + 2*x + 1, 1, -60*x^3 + 180*x^2 + 120*x - 59], [13*x^3 + 4*x^2 - 52*x - 10, -86*x^3 - 26*x^2 + 345*x + 65, 755*x^3 - 660*x^2 - 3259*x + 2820, -5*x^3 + 19*x], [-1, 1, 1, 1]]
+
+? F.truefund[3]  \\ third cone
+% = [[1, x^2 - 2*x + 1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [-265*x^3 - 220*x^2 + 1137*x + 940, 155*x^3 - 667*x, 25*x^3 + 40*x^2 - 69*x - 100, -5*x^3 + 19*x], [1, 1, -1, 1]]
+
+? F.truefund[4] \\ fourth cone
+% = [[x^2 - 2*x + 1, -9*x^3 + 19*x^2 + 6*x - 13, -10*x^3 + 23*x^2 + 7*x - 16, x^2 - 2*x + 4, -9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8], [-163*x^3 - 135*x^2 + 700*x + 578, 49*x^3 + 108*x^2 - 116*x - 270, -25*x^3 - 40*x^2 + 69*x + 100, 298*x^3 + 18*x^2 - 1265*x - 45, 19*x^3 + 21*x^2 - 67*x - 59], [-1, -1, 1, -1, 1]]
+
+? F.truefund[5]  \\ fifth cone
+% = [[-10*x^3 + 23*x^2 + 7*x + 8, x^2 - 2*x + 4, 1, -361*x^3 + 764*x^2 + 241*x - 265, -54*x^3 + 115*x^2 + 34*x - 38], [298*x^3 + 18*x^2 - 1265*x - 45, -25*x^3 - 40*x^2 + 69*x + 100, -19*x^3 - 21*x^2 + 67*x + 59, 34*x^3 + 40*x^2 - 111*x - 100, 49*x^3 + 108*x^2 - 116*x - 270], [-1, 1, -1, -1, -1]]
+
+? F.truefund[6]  \\ sixth cone
+% = [[1, -x^3 + 2*x^2 + x - 1, -10*x^3 + 23*x^2 + 7*x - 16, -60*x^3 + 180*x^2 + 120*x - 59, -10*x^3 + 29*x^2 + 19*x - 10], [-86*x^3 - 26*x^2 + 345*x + 65, -4*x^3 + 6*x^2 + 23*x - 15, 8*x^3 + 2*x^2 - 33*x - 5, 755*x^3 - 660*x^2 - 3259*x + 2820, 19*x^3 - 9*x^2 - 80*x + 42], [1, -1, 1, 1, -1]]
+
+? F.truefund[7]  \\ seventh cone
+% = [[-9*x^3 + 19*x^2 + 6*x - 13, -10*x^3 + 23*x^2 + 7*x - 16, -x^3 + 2*x^2 + x - 1, -9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8], [16*x^3 + 18*x^2 - 53*x - 45, 19*x^3 - 9*x^2 - 80*x + 42, -298*x^3 - 18*x^2 + 1265*x + 45, 19*x^3 + 21*x^2 - 67*x - 59, 4*x^3 - 6*x^2 - 23*x + 15], [-1, -1, 1, 1, 1]]
+
+? F.truefund[8]  \\ eighth cone
+% = [[-10*x^3 + 23*x^2 + 7*x + 8, 1, -x^3 + 2*x^2 + x - 1, -361*x^3 + 764*x^2 + 241*x - 265], [34*x^3 + 40*x^2 - 111*x - 100, -19*x^3 - 21*x^2 + 67*x + 59, -298*x^3 - 18*x^2 + 1265*x + 45, 4*x^3 - 6*x^2 - 23*x + 15], [-1, -1, 1, 1]]
+
+/*****************************************************************************************************/
