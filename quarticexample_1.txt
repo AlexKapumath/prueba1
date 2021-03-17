@@ -27,6 +27,8 @@
 
 ? F=fudom([p,U]); \\ routine given a "fundomain_V9-1.gp" to obtain a TRUE fundamental domain from a SIGNED one, here F has 4 elements
 
+... Finished:  A true fund'l domain have been obtained with 8 4-dimensional cones.
+
 ?  F.data   \\ F.data=F[1]=[p, K.disc, U, [a,b], [a1,b1], S, #S] (described in "fundomain_V9-1.gp")
 
 % = [x^4 - 5*x^2 + 3, 8112, [x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1], [1, 5], [0, 8], [[[0, 0, 0], 2], [[-1, 0, 0], 2]], 2]
@@ -38,7 +40,7 @@
 ? #F.truefund \\ number of 4-dimensional rational cones that define a true fundamental domain after of remove the negative cone
 % = 8
 
-? F.truefund[1] \\ first cone given as [[V-represent., H-represent.], vector of signs +1 or -1 in relation to parts some of its boundary]
+? F.truefund[1] \\ first cone given as [[V-represent., H-represent.], vector of +1 or -1 used to find all their proper faces in this cone]
 
 % = [[3*x^2 - 2, 1, -10*x^3 + 23*x^2 + 7*x - 16, 42*x^2 + 78*x + 37], [86*x^3 + 26*x^2 - 345*x - 65, 755*x^3 - 660*x^2 - 3259*x + 2820, -5*x^3 + 19*x, -155*x^3 + 667*x], [-1, 1, 1, -1]]
 
@@ -73,4 +75,125 @@
 % = 122
 
 
-/*****************************************************************************************************/
+
+/****************************************************************************************************************/
+/* To obtain a TRUE fundamental domain also we need to find all the proper faces of the 8 cones obtained above */
+
+
+/* (proper) faces in the first cone F.truefund[1]: */
+ 
+? v1=ABoundaryFaces(F.truefund[1],K); 
+\\ v1 is a vector of 3 (=n-1) lists of subsets in K, where v1[1]=1-faces, v1[2]=2-faces, v1[3]=3-faces are all faces that we need to add the  first cone "F.truefund[1]". This return that there is an one 2-dimensional and two 3-dimensional faces in this cone.
+\\ each (proper) face is given by their generators (or R-representation):
+
+? v1[1] \\ 1-faces in F.truefund[1] (empty)
+% = []
+
+? v1[2] \\ 2-faces in F.truefund[1] (there is one 2-face)
+% = [[3*x^2 - 2, 42*x^2 + 78*x + 37]]
+
+? v1[3] \\ 3-faces in F.truefund[1] (there is two 3-faces)
+% = [[3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16, 42*x^2 + 78*x + 37], [3*x^2 - 2, 1, 42*x^2 + 78*x + 37]]
+
+
+/*  (proper) faces in the second cone F.truefund[2]: */
+
+? v2=ABoundaryFaces(F.truefund[2],K);
+
+? v2[1] \\ 1-faces in F.truefund[1] (there is one 1-face)
+% = [[42*x^2 + 78*x + 37]]
+
+? v2[2] \\ 2-faces in F.truefund[1] (there is three 3-face)
+% = [[42*x^2 + 78*x + 37, x^2 + 2*x + 1], [42*x^2 + 78*x + 37, 1], [42*x^2 + 78*x + 37, -60*x^3 + 180*x^2 + 120*x - 59]]
+
+? v2[3] \\ 3-faces in F.truefund[1] (there is three 1-face)
+% = [[42*x^2 + 78*x + 37, 1, -60*x^3 + 180*x^2 + 120*x - 59], [42*x^2 + 78*x + 37, x^2 + 2*x + 1, -60*x^3 + 180*x^2 + 120*x - 59], [42*x^2 + 78*x + 37, x^2 + 2*x + 1, 1]]
+
+
+/*  (proper) faces in the third cone F.truefund[3]: */
+
+? v3=ABoundaryFaces(F.truefund[3],K);
+
+? v3[1] \\ 1-faces in F.truefund[1] (there is one 1-face)
+% = [[3*x^2 - 2]]
+
+? v3[2] \\ 2-faces in F.truefund[1] (there is three 2-face)
+% = [[1, 3*x^2 - 2], [x^2 - 2*x + 1, 3*x^2 - 2], [3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16]]
+
+? v3[3] \\ 3-faces in F.truefund[1] (there is three 3-face)
+% = [[x^2 - 2*x + 1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, x^2 - 2*x + 1, 3*x^2 - 2]]
+
+
+/*  (proper) faces in the fourth cone F.truefund[4]: */
+
+? v4=ABoundaryFaces(F.truefund[4],K);
+
+? v4[1]
+% = []
+
+? v4[2]
+% = [[x^2 - 2*x + 4, -10*x^3 + 23*x^2 + 7*x + 8]]
+
+? v4[3]
+% = [[x^2 - 2*x + 1, -10*x^3 + 23*x^2 + 7*x - 16, x^2 - 2*x + 4, -10*x^3 + 23*x^2 + 7*x + 8], [x^2 - 2*x + 4, -9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8]]
+
+
+/*  (proper) faces in the fifth cone F.truefund[5]: */
+
+? v5=ABoundaryFaces(F.truefund[5],K);
+
+? v5[1]
+% = []
+
+? v5[2]
+% = []
+
+? v5[3]
+% = [[-10*x^3 + 23*x^2 + 7*x + 8, x^2 - 2*x + 4, 1]]
+
+
+/*  (proper) faces in the sixth cone F.truefund[6]: */
+
+? v6=ABoundaryFaces(F.truefund[6],K);
+
+? v6[1]
+% = [[-60*x^3 + 180*x^2 + 120*x - 59]]
+
+? v6[2]
+% = [[1, -60*x^3 + 180*x^2 + 120*x - 59], [-10*x^3 + 23*x^2 + 7*x - 16, -60*x^3 + 180*x^2 + 120*x - 59], [-60*x^3 + 180*x^2 + 120*x - 59, -10*x^3 + 29*x^2 + 19*x - 10]]
+
+? v6[3]
+% = [[1, -10*x^3 + 23*x^2 + 7*x - 16, -60*x^3 + 180*x^2 + 120*x - 59], [1, -x^3 + 2*x^2 + x - 1, -60*x^3 + 180*x^2 + 120*x - 59, -10*x^3 + 29*x^2 + 19*x - 10], [-10*x^3 + 23*x^2 + 7*x - 16, -60*x^3 + 180*x^2 + 120*x - 59, -10*x^3 + 29*x^2 + 19*x - 10]]
+
+
+/*  (proper) faces in the seventh cone F.truefund[7]: */
+
+? v7=ABoundaryFaces(F.truefund[7],K);
+
+? v7[1]
+% = [[-10*x^3 + 23*x^2 + 7*x + 8]]
+
+? v7[2]
+% = [[-10*x^3 + 23*x^2 + 7*x - 16, -10*x^3 + 23*x^2 + 7*x + 8], [-x^3 + 2*x^2 + x - 1, -10*x^3 + 23*x^2 + 7*x + 8], [-9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8]]
+
+? v7[3]
+% = [[-9*x^3 + 19*x^2 + 6*x - 13, -10*x^3 + 23*x^2 + 7*x - 16, -9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8], [-x^3 + 2*x^2 + x - 1, -9*x^3 + 19*x^2 + 6*x - 7, -10*x^3 + 23*x^2 + 7*x + 8], [-10*x^3 + 23*x^2 + 7*x - 16, -x^3 + 2*x^2 + x - 1, -10*x^3 + 23*x^2 + 7*x + 8]]
+
+
+/*  (proper) faces in the eighth cone F.truefund[8]: */
+
+? v8=ABoundaryFaces(F.truefund[8],K);
+
+? v8[1]
+% = []
+
+? v8[2]
+% = [[-10*x^3 + 23*x^2 + 7*x + 8, 1]]
+
+? v8[3]
+% = [[-10*x^3 + 23*x^2 + 7*x + 8, 1, -361*x^3 + 764*x^2 + 241*x - 265], [-10*x^3 + 23*x^2 + 7*x + 8, 1, -x^3 + 2*x^2 + x - 1]]
+
+
+
+/******************************************************************************************************************************/
+
