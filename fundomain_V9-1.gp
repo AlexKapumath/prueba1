@@ -693,7 +693,7 @@ for(j=1,n-1,
     E=F[j];
     if(#E>0, C[n-j]=vector(#E,j,vector(#E[j],i,A[E[j][i]])), C[n-j]=[]);
     );
-return(C); \\ this is a vector of lists of all the faces in P ordered by (n-1)-faces; (n-2)-faces;....;2-faces;1-faces
+return(C); \\ this is a vector of lists of all the faces in the boundary of P ordered by (n-1)-faces; (n-2)-faces;....;2-faces;1-faces
 }
 
 
