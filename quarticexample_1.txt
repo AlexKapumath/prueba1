@@ -14,13 +14,13 @@
 
 ? SF=signedfd1(U,K);  \\ routine given in "SignedFundlDomain_V2.gp"
 
-[[1, 5], 14]    \\ there exist 1 negative cone and 5 positive cones
+[[1, 5], 14]    \\ there exist 1 negative cone and 5 positive (4-dimensional) cones
 
-? SF.negcones   \\ list of negative cones given by their generators 
+? SF.negcones   \\ list of negative cones given by their generators (or R-representation)
 
 % = [[1, x^2 + 2x + 1, -x^3 + 3x^2 + 2x - 1, -10x^3 + 23x^2 + 7x - 16]]  
 
-? SF.poscones     \\ list of negative cones given by their generators
+? SF.poscones     \\ list of positive cones given by their generators
 
 % = [[1, x^2 + 2x + 1, 3x^2 - 2, -10x^3 + 23x^2 + 7x - 16], [1, x^2 - 2x + 1, 3x^2 - 2, -10x^3 + 23x^2 + 7x - 16], [1, x^2 - 2x + 1, -9x^3 + 19x^2 + 6x - 13, -10x^3 + 23x^2 + 7x - 16], [1, -x^3 + 2x^2 + x - 1, -x^3 + 3x^2 + 2x - 1, -10x^3 + 23x^2 + 7x - 16], [1, -x^3 + 2x^2 + x - 1, -9x^3 + 19x^2 + 6x - 13, -10x^3 + 23x^2 + 7x - 16]]
 
@@ -29,13 +29,19 @@
 
 ... Finished:  A true fund'l domain have been obtained with 8 4-dimensional cones.
 
-?  F.data   \\ F.data=F[1]=[p, K.disc, U, [a,b], [a1,b1], S, #S] (described in "fundomain_V9-1.gp")
+\\ The "F.data" below is given by: F.data=F[1]=[p, K.disc, U, [a,b], [a1,b1], S, #S] (see "fundomain_V9-1.gp")
+\\ where [a,b]=[#initial of negative cones, #initial positive cones]
+\\ [a1,b1]=[#of negative cones obtained after of use units to remove negative cones, #positive cones]
+\\ S=set of units used in all the process to delete the interior of full-dimensional negative cones.
+\\ Below we note that we use the units with exponents [0,0,0] and [-1,0,0], i.e. the trivial unit u0:=1 and the unit u1:=U[1]^(-1)
+
+?  F.data  
 
 % = [x^4 - 5*x^2 + 3, 8112, [x^2 + 2*x + 1, x^2 - 2*x + 1, -x^3 + 2*x^2 + x - 1], [1, 5], [0, 8], [[[0, 0, 0], 2], [[-1, 0, 0], 2]], 2]
 
 \\ F[2]=[list of cones that define a signed fundamental domain, a true fundamental domain]
-? F.ngcones \\ it is F[2][1]=list of negative cones
-? F.pscones \\ it is F[2][2]=list of positive cones
+? F.ngcones \\ it is F[2][1]=list of initial negative cones
+? F.pscones \\ it is F[2][2]=list of initial positive cones
 
 ? #F.truefund \\ number of 4-dimensional rational cones that define a true fundamental domain after of remove the negative cone
 % = 8
@@ -89,10 +95,10 @@
 ? v1[1] \\ 1-faces in F.truefund[1] (empty)
 % = []
 
-? v1[2] \\ 2-faces in F.truefund[1] (there is one 2-face)
+? v1[2] \\ 2-faces in F.truefund[1] (there is #v1[2]=1  2-face)
 % = [[3*x^2 - 2, 42*x^2 + 78*x + 37]]
 
-? v1[3] \\ 3-faces in F.truefund[1] (there is two 3-faces)
+? v1[3] \\ 3-faces in F.truefund[1] (there is #v1[3]=2  3-face)
 % = [[3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16, 42*x^2 + 78*x + 37], [3*x^2 - 2, 1, 42*x^2 + 78*x + 37]]
 
 
@@ -100,13 +106,13 @@
 
 ? v2=ABoundaryFaces(F.truefund[2],K);
 
-? v2[1] \\ 1-faces in F.truefund[1] (there is one 1-face)
+? v2[1] \\ 1-faces in F.truefund[1] (there is #v2[1]=1  1-face)
 % = [[42*x^2 + 78*x + 37]]
 
-? v2[2] \\ 2-faces in F.truefund[1] (there is three 3-face)
+? v2[2] \\ 2-faces in F.truefund[1] (there is #v2[2]=3  2-face)
 % = [[42*x^2 + 78*x + 37, x^2 + 2*x + 1], [42*x^2 + 78*x + 37, 1], [42*x^2 + 78*x + 37, -60*x^3 + 180*x^2 + 120*x - 59]]
 
-? v2[3] \\ 3-faces in F.truefund[1] (there is three 1-face)
+? v2[3] \\ 3-faces in F.truefund[1] (there is #v2[3]=3  3-face)
 % = [[42*x^2 + 78*x + 37, 1, -60*x^3 + 180*x^2 + 120*x - 59], [42*x^2 + 78*x + 37, x^2 + 2*x + 1, -60*x^3 + 180*x^2 + 120*x - 59], [42*x^2 + 78*x + 37, x^2 + 2*x + 1, 1]]
 
 
@@ -114,13 +120,13 @@
 
 ? v3=ABoundaryFaces(F.truefund[3],K);
 
-? v3[1] \\ 1-faces in F.truefund[1] (there is one 1-face)
+? v3[1] \\ 1-faces in F.truefund[1] (there is #v3[1]=1  1-face)
 % = [[3*x^2 - 2]]
 
-? v3[2] \\ 2-faces in F.truefund[1] (there is three 2-face)
+? v3[2] \\ 2-faces in F.truefund[1] (there is #v3[2]=3  2-face)
 % = [[1, 3*x^2 - 2], [x^2 - 2*x + 1, 3*x^2 - 2], [3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16]]
 
-? v3[3] \\ 3-faces in F.truefund[1] (there is three 3-face)
+? v3[3] \\ 3-faces in F.truefund[1] (there is #v3[3]=3  3-face)
 % = [[x^2 - 2*x + 1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, 3*x^2 - 2, -10*x^3 + 23*x^2 + 7*x - 16], [1, x^2 - 2*x + 1, 3*x^2 - 2]]
 
 
