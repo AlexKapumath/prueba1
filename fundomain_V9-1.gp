@@ -664,9 +664,9 @@ return(L);
 
 
 /**************************************************************/
-/* Now we want to add all the faces of each semi-closed cone */
+/* Now we want to add ALL the faces of each semi-closed cone that define a TRUE fundamental domain*/
 ABoundaryFaces(P,d)=   \\P=[R-repre, H-repre,v]; v=vector of sign "+/-1" obtained in ABoundary().
-{my(A,B,v,g,G,nf,F,n,S,h,b);
+{my(A,B,v,g,G,nf,F,n,S,h,b,C,E);
 nf=d.nf;
 n=d.r1+2*d.r2;
 p=d.pol;
@@ -678,7 +678,7 @@ for(i=1,#g,
     G[i]=[j| j<-[1..#A], nfelttrace(nf, B[g[i]]*A[j])==0] \\ indexes of (n-1)-faces of L
     );
 F=vector(n-1,j);
-F[1]=G;
+F[1]=G; 
 for(j=1,n-2,
     h=F[j];
     S=[];
@@ -687,8 +687,13 @@ for(j=1,n-2,
         );
     F[j+1]=S;
    );
-b=vector(#F,j,#F[j]);
-return([F,b]);
+\\b=vector(#F,j,#F[j]);
+C=vector(n-1,j);
+for(j=1,n-1,
+    E=F[j];
+    if(#E>0, C[n-j]=vector(#E,j,vector(#E[j],i,A[E[j][i]])), C[n-j]=[]);
+    );
+return(C);
 }
 
 
