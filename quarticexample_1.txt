@@ -1,7 +1,7 @@
 
 /********************************************************************************************************/
 /* Here, we give an example of the implementation to obtain a true fundamental domain from a signed one */
-/* For a totally real quartic field number */
+/* For a totally real quartic number field */
 
 
 ? p=x^4 - 5*x^2 + 3;
