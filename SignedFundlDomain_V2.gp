@@ -6,6 +6,12 @@
 /* [DDF14] Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    */
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 
+/*---------------------- Global variables ------*/
+signedfd1.negcones=signedfd1[1]; \\ list of negative cones (only generators of each cone)
+signedfd1.poscones=signedfd1[2]; \\ list of positive cones
+signedfd2.negcones=signedfd2[1]; \\ list of negative cones (only generators of each cone)
+signedfd2.poscones=signedfd2[2]; \\ list of positive cones
+
 allocatemem(10^9);
 \p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
 /***********************************************************************************************************************/
@@ -146,7 +152,7 @@ R=vector(#S); \\ vector of zeros
 l=log; n=d.r1+2*d.r2;
 R1=rpe(S,d); \\ representation of the list on R^n
 for(j=1,#S,
-    s=R1[j]; R[j]=vector(n-1,i,l(s[i]));
+    s=R1[j]; R[j]=vector(n-1,i,precision(l(s[i]),1200)); 
    );
 return(R);
 }
