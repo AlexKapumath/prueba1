@@ -12,4 +12,4 @@ Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from 
 In "SignedFundlDomain_V2.gp" we implement the signed domains given in [DDF14] (for totally real fields) [EF20] (for all the non-totally complex fields).
 So based in this implementation, we give in "fundomain_V9-1.gp" an algorithm to find a true fundamental domain.
 
-We recommend seeing the examples given in "examples.gp".
+We recommend seeing the examples given in "quarticexample_1.gp".
