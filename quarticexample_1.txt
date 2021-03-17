@@ -6,7 +6,7 @@
 
 ? p=x^4 - 5*x^2 + 3;
 
-? K=bnfinit(p); \\ given by Pari/GP
+? K=bnfinit(p); \\ data given by Pari/GP
 
 ? U=topu(K)     \\ generators of the totally positives unit group of K
 
