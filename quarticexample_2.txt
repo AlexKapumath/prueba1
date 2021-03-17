@@ -1,12 +1,12 @@
 
 /********************************************************************************************************/
 /* Here, we give an example of the implementation to obtain a true fundamental domain from a signed one */
-/* For a quartic field number with signature (r1,r2)=(2,1) */
+/* For a quartic number field with signature (r1,r2)=(2,1) */
 
 
 ? p=x^4 - x^3 - 6*x^2 + 12*x + 1;
 
-? K=bnfinit(p); \\ given by Pari/GP
+? K=bnfinit(p); \\ data given by Pari/GP
 
 ? U=topu(K)    \\ generators of the totally positives unit group of K
 
