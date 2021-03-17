@@ -63,4 +63,14 @@
 ? F.truefund[8]  \\ eighth cone
 % = [[-10*x^3 + 23*x^2 + 7*x + 8, 1, -x^3 + 2*x^2 + x - 1, -361*x^3 + 764*x^2 + 241*x - 265], [34*x^3 + 40*x^2 - 111*x - 100, -19*x^3 - 21*x^2 + 67*x + 59, -298*x^3 - 18*x^2 + 1265*x + 45, 4*x^3 - 6*x^2 - 23*x + 15], [-1, -1, 1, 1]]
 
+
+\\ F[3] is time in miliseconds to obtain a true fundamental domain from a signed one given
+? F.timetruefd  \\ it is F[3]
+% = 17
+
+\\ F[4] time in miliseconds to obtain a signed fundamental domain
+? F.timesignedfd \\ it is F[4]
+% = 122
+
+
 /*****************************************************************************************************/
