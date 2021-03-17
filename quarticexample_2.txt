@@ -174,7 +174,7 @@
 
 ? v1=ABoundaryFaces(F.truefund[1],K);
 \\ v1 is a vector of 3 (=n-1) lists of subsets in K, where v1[1]=1-faces, v1[2]=2-faces, v1[3]=3-faces are all faces that we need to add the  first cone "F.truefund[1]". This return that there is an one 2-dimensional and two 3-dimensional faces in this cone.
-\\ each (proper) face is given by their generators (or R-representation):
+\\ each (proper) face is given by their generators (or V-representation):
 
 ? v1[1]  \\ 1-faces in F.truefund[1] (empty)
 
