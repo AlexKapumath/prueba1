@@ -16,7 +16,7 @@
 
 [[1, 5], 14]    \\ there exist 1 negative cone and 5 positive (4-dimensional) cones
 
-? SF.negcones   \\ list of negative cones given by their generators (or R-representation)
+? SF.negcones   \\ list of negative cones given by their generators (or R- or V-representation)
 
 % = [[1, x^2 + 2x + 1, -x^3 + 3x^2 + 2x - 1, -10x^3 + 23x^2 + 7x - 16]]  
 
