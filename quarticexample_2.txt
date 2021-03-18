@@ -16,7 +16,7 @@
 
 [58][233][[1, 17], 355]  \\ there exist 1 negative cone and 17 positive (4-dimensional) cones
 
-? SF.negcones    \\ list of negative cones given by their generators (or R-representation) [one negative cone]
+? SF.negcones    \\ list of negative cones given by their generators (or R- or V-representation) [one negative cone]
 
 % = [[27263651*x^3 + 28710831*x^2 - 129854523*x - 10564391, -x^3 + 10*x^2 + 36*x + 3, 1, 194016*x^3 + 98700*x^2 - 1222705*x + 1112580]]
 
@@ -164,6 +164,14 @@
 
 % = [[27263651*x^3 + 28710831*x^2 - 129854523*x - 10564391, -x^3 + 10*x^2 + 36*x + 3, 12686103*x^3 + 5894982*x^2 - 81394227*x - 6339889, 194016*x^3 + 98700*x^2 - 1222705*x + 1112580], [-4659903930151965*x^3 + 7207658683174307*x^2 + 19169638684688833*x - 48077568504171849, 2665273410032628850373244*x^3 - 4143338354703600070066325*x^2 - 10949585559088422930867482*x + 27560402692518884475318829, 3983885162263212796*x^3 - 6176502672441678851*x^2 - 16384956082152066086*x + 41104761861304768003, -4098689239257452*x^3 + 15294201443906059*x^2 - 17273925733398050*x - 1653205853118699], [1, -1, -1, 1]]
 
+
+\\ F[3] is time in miliseconds to obtain a true fundamental domain from a signed one given
+? F.timetruefd  \\ it is F[3]
+% = 86
+
+\\ F[4] time in miliseconds to obtain a signed fundamental domain
+? F.timesignedfd \\ it is F[4]
+% = 372
 
 /****************************************************************************************************************/
 /* To obtain a TRUE fundamental domain also we need to find all the proper faces of the 20 cones obtained above */
