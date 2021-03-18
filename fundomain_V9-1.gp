@@ -7,7 +7,7 @@
 /* [DDF14] Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    */
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 /* Our implementation is also based in the description of rational cones by inequalities (or H-representation) and     */
-/* generators (or V-representation). For this we use the work of Fukuda and Prodon:     */
+/* generators (or R- or V-representation). For this we use the work of Fukuda and Prodon:     */
 /* [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  */
   
 
@@ -68,7 +68,7 @@ a=#L[1];         \\ initial number of n-dimensional negative cones.
 b=#L[2];         \\ initial number of n-dimensional positive cones.
 V=lista(r,5);      \\ the elements are ordered by "weight" and "lexicographically", see function "lista()" below 
 t1=getwalltime();  
-P0=vector(b,i,HV(L[2][i],d)); \\ list of cones as [generators, inequalities]=[R-repres., H-repres.]
+P0=vector(b,i,HV(L[2][i],d)); \\ list of cones as [generators, inequalities]=[V-repres., H-repres.]
 if(a==0,         \\ means that such signed domain is a true one.
     P0=ABoundary(P0,d);         \\ Adding the facets in each cone to obtain a true fundamental domain.
     G=[p, d.disc, U, [0,b], [0,b], [], 0];    \\ S=[]=empty list (since we do not need using any unit to remove negative cones).
@@ -76,7 +76,7 @@ if(a==0,         \\ means that such signed domain is a true one.
     );        
 if(a>0,                    \\ means that there is an n-dimensional NEGATIVE cone.
     S=[];     
-    N0=vector(a,i,HV(L[1][i],d));         \\ list of cones as [R-repres, H-repres]
+    N0=vector(a,i,HV(L[1][i],d));         \\ list of cones as [V-repres, H-repres]
     N=vector(a,i,[N0[i], [N0[i]]]);       \\ Each cone is considered as [Cone=C, List of subcones asociated to C]
     P=vector(b,i,[P0[i], [P0[i]]]);   
     for(j=1,#V,
@@ -351,7 +351,7 @@ return(f);             \\f=1 means that the rays v1 and v2 are neighbour (or adj
 
 
 /* Adding some restriction [w]: tr(wx) => 0, w\in k, of a pair (R;L) given , where L is an H-repr. and R thus V-repr. of L */
-/*** INPUT: v=[w,R,L], where w is a inequality "tr(wx) => 0" and [R,L]=[R-representation,H-representation] is a cone given*/
+/*** INPUT: v=[w,R,L], where w is a inequality "tr(wx) => 0" and [R,L]=[V-representation,H-representation] is a cone given*/
 /*** d= bnfinit(poly) */
 
 /*** OUTPUT: return a new cone with this inequality added */ 
@@ -369,8 +369,8 @@ if(#T==0,S=[], T=[ad|ad<-T, nbour([ad,L],d)==1];  \\ here we consider only the a
     for(j=1,#T, e=T[j][1]; f=T[j][2]; ray=nfelttrace(nf,w*e)*f-nfelttrace(nf,w*f)*e; S[j]=ray/abs(content(ray)));
   );
 L=concat(L,[w]);
-R=concat(concat(Rp,R0),S); \\ new R-representation of P after add the restriction w.
-return([R,L]);   \\ new R-repr (without redundancies) and H-repr of the cone when we add the restriction w. (Here L could have some redudances)
+R=concat(concat(Rp,R0),S); \\ new V-representation of P after add the restriction w.
+return([R,L]);   \\ new V-repr (without redundancies) and H-repr of the cone when we add the restriction w. (Here L could have some redudances)
 }
 
 
@@ -634,15 +634,15 @@ return(A); \\ represent the closure of the P\(gN1,gN2,...,gNr) as a list of subc
 /*                which is based in the Colmez's trick                              */
 /*                                                                                  */
 /************************************************************************************/
-/** Given the vantage point e1=(1,0,...,0) in R^(r1)X(C)^(r2) and an n-dimenional rational cone C=[R-repres.,H-repres.] in R^(r1)X(C)^(r2) */
+/** Given the vantage point e1=(1,0,...,0) in R^(r1)X(C)^(r2) and an n-dimenional rational cone C=[V-repres.,H-repres.] in R^(r1)X(C)^(r2) */
 /** Return a vector v=[vector of +1 or -1], where "+1" means that L(e1)>0 and "-1" means L(e1)<0, for each L: V --> R, L(x)=tr(wx) represent a inequality in the H-representation of C */
 
 /*****************************************************************************************************************/
 \\Similarly as [EF20, Section 4.3]:
-\\ In each closed n-dimensional rational cone C=[R-repr., H-repr.] in the list L, some parts of its boundary need to be add to obtain a true fundamental domain. In this case we use the Colmez's trick. More precisely, if the set [w_1,...,w_h] (in K) define the H-repre. of C, thus C={x in X: L_j=tr(w_jx)>=0}, this induce the semi-closed cone D={x in X: L_i(x)>0, for i in A1 and L_i(x)>=0, for i in A1, L_i(x)>0, i in A2}, where A1={i \in {1,...,h}: L_i(e1)>0} and A2={i \in {1,...,h}: L_i(e1)<0}, e1=(1,0,...0) in X=R^(r1)xC^(r2) (here it is necessary that r1>0). 
+\\ In each closed n-dimensional rational cone C=[V-repr., H-repr.] in the list L, some parts of its boundary need to be add to obtain a true fundamental domain. In this case we use the Colmez's trick. More precisely, if the set [w_1,...,w_h] (in K) define the H-repre. of C, thus C={x in X: L_j=tr(w_jx)>=0}, this induce the semi-closed cone D={x in X: L_i(x)>0, for i in A1 and L_i(x)>=0, for i in A1, L_i(x)>0, i in A2}, where A1={i \in {1,...,h}: L_i(e1)>0} and A2={i \in {1,...,h}: L_i(e1)<0}, e1=(1,0,...0) in X=R^(r1)xC^(r2) (here it is necessary that r1>0). 
 /*****************************************************************************************************************/
 
-/*** INPUT: L is a list of rational cones with R-repr. and H-repr. */
+/*** INPUT: L is a list of rational cones with V-repr. and H-repr. */
 
 /*** OUTPUT: Return the same list L with a vector of sign in each cones which */ 
 /*** represented by "+1" if a part of the facet is added in the cone given and the sign "-1" otherwise   */
@@ -665,7 +665,7 @@ return(L);
 
 /**************************************************************/
 /* Now we want to add ALL the faces of each semi-closed cone that define a TRUE fundamental domain*/
-ABoundaryFaces(P,d)=   \\P=[R-repre, H-repre,v]; v=vector of sign "+/-1" obtained in ABoundary().
+ABoundaryFaces(P,d)=   \\P=[V-repre, H-repre,v]; v=vector of sign "+/-1" obtained in ABoundary().
 {my(A,B,v,g,G,nf,F,n,S,h,b,C,E);
 nf=d.nf;
 n=d.r1+2*d.r2;
@@ -697,7 +697,7 @@ return(C); \\ this is a vector of lists of all the proper faces in the boundary 
 }
 
 
-/*** INPUT: Given L=[set of index of face, Face of P, all the facets of P, R-repre. of P]; d=bnfinit(K)*/
+/*** INPUT: Given L=[set of index of face, Face of P, all the facets of P, V-repre. of P]; d=bnfinit(K)*/
 
 /*** OUTPUT: list of all the facets of the face F ***/ 
 
@@ -705,9 +705,9 @@ lsf(L,d)=
 {my(nf,e,F,G,S,B,s,R);
 nf=d.nf;
 e=L[1]; \\ dimension of the face F
-F=L[2]; \\ F represent one face of P such F is given as an R-repre.
-R=L[3]; \\ R-repr. of the cone P
-G=L[4]; \\ list of all facets  of P as an R-repre.
+F=L[2]; \\ F represent one face of P such F is given as an V-repre.
+R=L[3]; \\ V-repr. of the cone P
+G=L[4]; \\ list of all facets  of P as an V-repre.
 S=[];
 for(j=1,#G,
     s=setintersect(F,G[j]);
