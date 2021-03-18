@@ -631,7 +631,7 @@ return(A); \\ represent the closure of the P\(gN1,gN2,...,gNr) as a list of subc
 /*                                                                                  */
 /*       6. Adding some boundaries in each n-dim. rational cone                     */
 /*          with respect to the vantage point e=(1,0,...,0)  in R^(r1)X(C)^(r2)     */
-/*                which is based in the Colmez's trick                              */
+/*                which is based in the Colmez's trick (see Section 4.3. in [EF20]) */
 /*                                                                                  */
 /************************************************************************************/
 /** Given the vantage point e1=(1,0,...,0) in R^(r1)X(C)^(r2) and an n-dimenional rational cone C=[V-repres.,H-repres.] in R^(r1)X(C)^(r2) */
