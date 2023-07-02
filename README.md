@@ -1,5 +1,5 @@
 # Computing Shintani fundamental domains
-Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a non-totally complex number field. This implimentation is based on preprint:
+Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a non-totally complex number field. This implementation is based on preprint:
 
 A.Capuñay, "COMPUTING SHINTANI DOMAINS (2022)"
 
