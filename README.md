@@ -12,7 +12,7 @@ The SIGNED domains were established in the works of Diaz y Diaz, Espinoza and Fr
  Our implementation is also based in the description of rational cones by inequalities (or H-representation) and    
  generators (or V-representation). For this we use the work of Fukuda and Prodon:   
  
- [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  
+ [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  https://link.springer.com/chapter/10.1007/3-540-61576-8_77
 
 In "SignedFundlDomain_V2.gp" we implement the signed domains given in [DDF14] (for totally real fields) and [EF20] (for non-totally complex fields).
 Thus based in this implementation, we give in "fundomain_V9-1.gp" an algorithm to find a true fundamental domain.
