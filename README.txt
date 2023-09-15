@@ -1,0 +1,24 @@
+# Computing Shintani fundamental domains
+Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a non-totally complex number field. This implementation is based on preprint:
+
+A.Capuñay, "COMPUTING SHINTANI DOMAINS" submitted to International Journal of Number Theory (2022)
+
+The SIGNED domains were established in the works of Diaz y Diaz, Espinoza and Friedman:
+
+[DDF14] F. Diaz y Diaz and E. Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    https://arxiv.org/abs/1303.3989
+
+[EF20] M. Espinoza and E. Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]   https://arxiv.org/abs/1903.07089
+
+Our implementation is also based in the description of rational cones by inequalities (or H-representation) and    
+generators (or V-representation). For this we use the Fukuda-Prodon's paper:   
+ 
+[FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  https://link.springer.com/chapter/10.1007/3-540-61576-8_77
+
+
+Description of the files:
+
+1. In "SignedFundlDomain_V2.gp" we implement the signed domains given in [DDF14] (for totally real fields) and [EF20] (for non-totally complex fields).
+
+2. Thus based in this implementation, we give in "fundomain_V9-1.gp" an algorithm to find a true fundamental domain.
+
+3. We recommend seeing the examples in quartic fields given in "quarticexample_1.txt" (for a totally real quartic field) and "quarticexample_2.txt" (for a quartic field with one complex place).
