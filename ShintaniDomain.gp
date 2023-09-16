@@ -91,11 +91,15 @@ return(D);
 
 
 ShintExamples(L)= \\ return a file with a list of examples with the input L=[list of polynomials]
-{my(D);
-D=vector(#L,j,fudom(L[j]));
+{my(F);
 write(Shintani,"examples = [\\");
-for(j=1,#D-1,write(Shintani,"",D[j],",\\"));
-write(Shintani,"",D[#D],"];");
+for(j=1,#L-1,
+   F=fudom(L[j]);
+   write(Shintani,"",F,",\\")
+);
+F=fudom(L[#L]);
+write(Shintani,"",F,"\\");
+write(Shintani,"];");
 }
 
 /*********************************************************************************************************************************/
