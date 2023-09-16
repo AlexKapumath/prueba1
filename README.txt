@@ -1,5 +1,5 @@
 # Computing Shintani fundamental domains
-Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a non-totally complex number field. This implementation is based on preprint:
+Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a non-totally complex number field. We also present some examples of Shintani domains in the folder "Examples". This implementation is based in the manuscript:
 
 A.Capuñay, "COMPUTING SHINTANI DOMAINS" submitted to the International Journal of Number Theory (2022)
 
@@ -69,7 +69,6 @@ where inqi=[w,1] or [w,-1] and w is an element of k (depending on  i and j). If 
               [CC1,CC2,...,CCT]
 
 where CCj is the closure in R^n of the cone Cj in F2. Each closed cone CCj is given here by a list of generators in k.
-
 
 
 
