@@ -93,13 +93,13 @@ Where:
 
    \r ShintaniKnr.txt
    
-  This return a vector called "examples=[E1,E2,...,Eg]", where each Ei=fudom(p) is a vector of size three which was described in item 2  with "p" an irreducible polynomial of degree "n" which defines a non-totally complex number field k. 
+  This returns a vector called "examples=[E1,E2,...,Eg]", where each Ei=fudom(p) is a vector of size three which was described in item 2  with "p" an irreducible polynomial of degree "n" which defines a non-totally complex number field k. 
 
 * The file "ShintaniKnr-ML.sage" can be read by SageMath using the command 
 
   load('ShintaniKnr-ML.sage') 
 
-this return the same list of examples as the file "ShintaniKnr.txt" with the same structure.
+this returns the same list of examples as the file "ShintaniKnr.txt" with the same structure.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
    
