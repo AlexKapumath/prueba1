@@ -36,7 +36,6 @@ FILE DESCRIPTION:
      `\r ShintaniDomain.gp`
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
-
      `F=fudom(p);`
      
 return a Shintani fundamental domain with the following structure:
