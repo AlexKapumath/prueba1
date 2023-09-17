@@ -37,15 +37,15 @@ FILE DESCRIPTION:
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
 
-     `F=fudom(p);`
-     
+     F=fudom(p);
+
 return a Shintani fundamental domain with the following structure:
 
-     `F=[F1,F2,F3];`
+     F=[F1,F2,F3];
      
 The first entry `F1` has the form
 
-     `[t, p, reg, disc, [r1, r2], U, T]`
+     [t, p, reg, disc, [r1, r2], U, T]
 
 with 
 
@@ -91,9 +91,7 @@ Where each folder `ShintaniKnr` contains the fundamental domains for number fiel
 
 Each folder `ShintaniKnr` contains three files:
 
-    `fieldsKnr.gp`
-    `ShintaniKnr.txt`
-    `ShintaniKnr-ML.sage`
+    `fieldsKnr.gp`  `ShintaniKnr.txt` `ShintaniKnr-ML.sage`
 
 Where:
     
