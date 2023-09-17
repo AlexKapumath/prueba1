@@ -18,10 +18,9 @@ Our implementation is also based in the description of rational cones by inequal
 generators (or V-representation). For this we use the Fukuda-Prodon's paper:  
 
 [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  
-[MR3198753](https://link.springer.com/chapter/10.1007/3-540-61576-8_77) 
+[MR1448924](https://link.springer.com/chapter/10.1007/3-540-61576-8_77) 
  
-[FP96] Fukuda and Prodon, "Double description method revisited" (1996) 
-[MR1448924](https://link.springer.com/chapter/10.1007/3-540-61576-8_77)
+
 -----------------------------------------------------------------------------------------------------------------
 
 
