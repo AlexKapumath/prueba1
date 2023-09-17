@@ -22,7 +22,7 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
 FILE DESCRIPTION:
 
 
-1. In the file "SignedDomain.gp" we implement the signed domains given in [DDF14] (for totally real fields) and [EF20] (for non-totally complex fields). Which can be read in Pari/GP using the command
+1. In the file `SignedDomain.gp` we implement the signed domains given in [DDF14] (for totally real fields) and [EF20] (for non-totally complex fields). Which can be read in Pari/GP using the command
 
      \r SignedDomain.gp
 
