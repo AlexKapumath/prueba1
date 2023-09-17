@@ -43,13 +43,13 @@ return a Shintani fundamental domain with the following structure:
 
      F=[F1,F2,F3];
      
-The first entry `F1` has the form
+The first entry `F1` (i.e., F[1]) has the form
 
      [t, p, reg, disc, [r1, r2], U, T]
 
 with 
 
-t    = real computation time for F in milliseconds (this depends on the number of negative cones in a signed domain and 
+t    = real computation time for `F` in milliseconds (this depends on the number of negative cones in a signed domain and 
        also on the type of processor used)
        
 p    = irreducible polynomial defining a non-totally complex number field k := the quotient ring Q[X]/(p) of degree n
@@ -65,7 +65,7 @@ U    = fundamental units of k. The Shintani domain corresponds to the action on 
 T    = number of semi-closed n-dimensional cones in the Shintani domain constructed. 
 
 
-The second entry F2 (i.e., F[2]) has the form
+The second entry `F2` (i.e., F[2]) has the form
 
               [C1,C2,...,CT]
 
@@ -75,11 +75,11 @@ which is a list of the T (semi-closed n-dimensional) cones in the Shintani domai
 
 where inqi=[w,1] or [w,-1] and w is an element of k (depending on  i and j). If w is followed by 1, then the corresponding (closed) half-space is the set of elements x of R^n with Trace(xw) >= 0. If w is followed by -1, then the corresponding (open) half-space is given by Trace(xw) > 0. Here Trace is the extension to R^n of the trace map from k to Q.
 
-   The third entry F3 of F (i.e., F[3]) has the form  
+   The third entry `F3` of F (i.e., F[3]) has the form  
 
               [CC1,CC2,...,CCT]
 
-where CCj is the closure in R^n of the cone Cj in F2. Each closed cone CCj is given here by a list of generators in k.
+where CCj is the closure in R^n of the cone Cj in `F2`. Each closed cone CCj is given here by a list of generators in k.
 
 
 
@@ -89,9 +89,9 @@ where CCj is the closure in R^n of the cone Cj in F2. Each closed cone CCj is gi
    
 Where each folder `ShintaniKnr` contains the fundamental domains for number fields of degree `n` (for n=6,5,4,3,2) with rank of units `r=r1+r2-1` (for 1<= r <=5 such that r1>0)
 
-Each folder `ShintaniKnr` contains three files:
+Each folder `ShintaniKnr` contains three files
 
-    `fieldsKnr.gp`  `ShintaniKnr.txt` `ShintaniKnr-ML.sage`
+    `fieldsKnr.gp`; `ShintaniKnr.txt`; `ShintaniKnr-ML.sage`
 
 Where:
     
@@ -113,9 +113,9 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
    
 SOME REMARKS: 
 
-(0) The commando in Pari/GP (after uploading files `SignedDomain.gp` and `ShintaniDomain.gp`):
+(0) The commando in Pari/GP (after uploading files `SignedDomain.gp` and `ShintaniDomain.gp`)
 
-      ``ShintExamples(L)``
+      `ShintExamples(L)`
     
 Return a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
