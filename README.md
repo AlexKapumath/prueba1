@@ -87,7 +87,7 @@ where CCj is the closure in R^n of the cone Cj in `F2`. Each closed cone CCj is 
 
    `ShintaniK65`; `ShintaniK54`; `ShintaniK53`; `ShintaniK52`; `ShintaniK43`; `ShintaniK42`; `ShintaniK32`; `ShintaniK31`; `ShintaniK21`
    
-Where each folder `ShintaniKnr` contains the fundamental domains for number fields of degree `n` (for n=6,5,4,3,2) with rank of units `r=r1+r2-1` (for 1<= r <=5 such that r1>0)
+Where each folder `ShintaniKnr` contains the fundamental domains for number fields of degree `n` (for n=2,3,4,5,6) with rank of units `r=r1+r2-1` (for 1<= r <=5 such that r1>0)
 
 Each folder `ShintaniKnr` contains three files:  `fieldsKnr.gp` -- `ShintaniKnr.txt` -- `ShintaniKnr-ML.sage`
 
@@ -111,11 +111,15 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
    
 SOME REMARKS: 
 
-(0) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
+(1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
-(1) The fundamental domains in the folder `ShintanK21` correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
+(2) The fundamental domains in the folder `ShintanK21` correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
 
-(2) And the folder `ShintaniK32` which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: [Real Cubic Shintani](https://www.sciencedirect.com/science/article/pii/S0022314X12000844)
+(3) And the folder `ShintaniK32` which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: [Real Cubic Shintani](https://www.sciencedirect.com/science/article/pii/S0022314X12000844)
 
-(3) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
+(4) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
+
+(5) The remaining files: `ShintaniK42` - `ShintaniK43` - `ShintaniK52` - `ShintaniK53` - `ShintaniK54` - `ShintaniK65` contains Shintani domains (for a list of polynomials given) which until now has not been considered of systemically.
+
+(6) The main bottleneck is that the number of cones on a Signed Domain grows (this is `3^(r)*(n-1)!` cones) when `n` grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our works well when `n<=5` and sometimes in sextic fields `n=6` when the negative cones in a Signed domains is small.
 
