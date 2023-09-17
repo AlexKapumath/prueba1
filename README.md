@@ -106,7 +106,7 @@ Where:
 this returns the same list of examples as the file `ShintaniKnr.txt` with the same structure.
 
    
-##SOME REMARKS: 
+## SOME REMARKS: 
 
 (1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
