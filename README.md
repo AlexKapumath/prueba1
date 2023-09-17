@@ -37,7 +37,7 @@ FILE DESCRIPTION:
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP:
 
-     F=fudom(p);
+     `F=fudom(p);`
      
 return a Shintani fundamental domain with the following structure:
 
@@ -117,7 +117,7 @@ SOME REMARKS:
 
 (0) The commando in Pari/GP (after uploading files `SignedDomain.gp` and `ShintaniDomain.gp`):
 
-      `ShintExamples(L)`
+      ``ShintExamples(L)``
     
 Return a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
