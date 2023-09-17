@@ -1,4 +1,4 @@
-# Computing Shintani fundamental domains
+## Computing Shintani fundamental domains
 
 Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a NON-TOTALLY COMPLEX NUMBER FIELD. We also present some examples of Shintani domains in the folder "Examples". This implementation is based in the manuscript:
 
@@ -21,10 +21,8 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
 [MR1448924](https://link.springer.com/chapter/10.1007/3-540-61576-8_77) 
  
 
------------------------------------------------------------------------------------------------------------------
 
-
-FILE DESCRIPTION:
+## FILE DESCRIPTION:
 
 
 1. In the file `SignedDomain.gp` we implement the signed domains given in [DDF14] (for totally real fields) and [EF20] (for non-totally complex fields). Which can be read in Pari/GP using the command
@@ -107,9 +105,8 @@ Where:
 
 this returns the same list of examples as the file `ShintaniKnr.txt` with the same structure.
 
-----------------------------------------------------------------------------------------------------------------
    
-SOME REMARKS: 
+##SOME REMARKS: 
 
 (1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
