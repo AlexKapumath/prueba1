@@ -116,7 +116,7 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
 
 (4) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
 
-(5) The remaining files: `ShintaniK42` - `ShintaniK43` - `ShintaniK52` - `ShintaniK53` - `ShintaniK54` - `ShintaniK65` contains Shintani domains (for a list of polynomials given) which until now has not been considered of systemically.
+(5) The remaining files: `ShintaniK42` - `ShintaniK43` - `ShintaniK52` - `ShintaniK53` - `ShintaniK54` - `ShintaniK65` contains Shintani domains (for a list of polynomials given) of quartic, quintic and sextic fields, which until now has not been considered of systemically.
 
 (6) The main bottleneck is that the number of cones on a Signed Domain grows (this is `3^(r2)*(n-1)!` cones) when `n` grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our works well when `n<=5` and sometimes in sextic fields `n=6` when the negative cones in a Signed domains is small.
 
