@@ -111,14 +111,11 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
    
 SOME REMARKS: 
 
-(0) The commando in Pari/GP (after uploading files `SignedDomain.gp` and `ShintaniDomain.gp`)
-      `ShintExamples(L)`
-    
-Return a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
+(0) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the commando in Pari/GP:  `ShintExamples(L)` return a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
 
 (1) The fundamental domains in the folder `ShintanK21` correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
 
-(2) And the folder `ShintaniK32` which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: https://www.sciencedirect.com/science/article/pii/S0022314X12000844
+(2) And the folder `ShintaniK32` which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: [Real Cubic](https://www.sciencedirect.com/science/article/pii/S0022314X12000844)
 
-(3) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016
+(3) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
 
