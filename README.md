@@ -8,14 +8,17 @@ A.Capuñay, "COMPUTING SHINTANI DOMAINS" -- International Journal of Number Theo
 ----------------------------------------------------------------------------------------------------------------
 The SIGNED domains were established in the works of Diaz y Diaz, Espinoza and Friedman:
 
-[DDF14] F. Diaz y Diaz and E. Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]  https://arxiv.org/abs/1303.3989
+[DDF14] F. Diaz y Diaz and E. Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]  
+https://arxiv.org/abs/1303.3989
 
-[EF20] M. Espinoza and E. Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]   https://arxiv.org/abs/1903.07089
+[EF20] M. Espinoza and E. Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]   
+https://arxiv.org/abs/1903.07089
 
 Our implementation is also based in the description of rational cones by inequalities (or H-representation) and    
 generators (or V-representation). For this we use the Fukuda-Prodon's paper:   
  
-[FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  https://link.springer.com/chapter/10.1007/3-540-61576-8_77
+[FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924] 
+https://link.springer.com/chapter/10.1007/3-540-61576-8_77
 -----------------------------------------------------------------------------------------------------------------
 
 
