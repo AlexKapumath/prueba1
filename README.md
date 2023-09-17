@@ -81,7 +81,7 @@ where CCj is the closure in R^n of the cone Cj in `F2`. Each closed cone CCj is 
 
 
 
-3. In the folder `Examples` we show several examples of explicit Shintani domains obtained using the `fudom(poly)` command described in item 2. Here there exists 9 subfolders (called `ShintaniKnr`)
+3. In the folder `Examples` we show several examples of explicit Shintani domains obtained using the `fudom(p)` command described in item 2. Here there exists 9 subfolders (called `ShintaniKnr`)
 
    `ShintaniK65`; `ShintaniK54`; `ShintaniK53`; `ShintaniK52`; `ShintaniK43`; `ShintaniK42`; `ShintaniK32`; `ShintaniK31`; `ShintaniK21`
    
@@ -118,5 +118,5 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
 
 (5) The remaining files: `ShintaniK42` - `ShintaniK43` - `ShintaniK52` - `ShintaniK53` - `ShintaniK54` - `ShintaniK65` contains Shintani domains (for a list of polynomials given) of non-totally complex `quartic`, `quintic` and `sextic` fields, which until now has not been considered of systemically.
 
-(6) The main bottleneck is that the number of cones on a Signed Domain grows (this is `3^(r2)*(n-1)!` cones) when `n` grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our implementation works well when `n<=5` and sometimes in sextic fields `n=6` when the negative cones in a Signed domains is small. However, it is possible trying to compute Shintani domains of number fields for `degree>6` if you are using a good processor, 
+(6) The main bottleneck is that the number of cones on a Signed Domain grows (this is `3^(r2)*(n-1)!` cones) when `n` grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our implementation works well when `n<=5` and sometimes in sextic fields `n=6` when the negative cones in a Signed domains is small. However, it is possible trying to compute Shintani domains of number fields for `degree>6` if you are using a good processor. 
 
