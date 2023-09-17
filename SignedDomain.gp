@@ -6,11 +6,6 @@
 /* [DDF14] Diaz y Diaz and Friedman, "Signed fundamental domain for totally real number fields" (2014)  [MR4105945]    */
 /* [EF20] Espinoza and Friedman, "Twisters and Signed fundamental domains of number fields" (2020)  [MR3198753]        */
 
-/*---------------------- Global variables ------*/
-signedfd1.negcones=signedfd1[1]; \\ list of negative cones (only generators of each cone)
-signedfd1.poscones=signedfd1[2]; \\ list of positive cones
-signedfd2.negcones=signedfd2[1]; \\ list of negative cones (only generators of each cone)
-signedfd2.poscones=signedfd2[2]; \\ list of positive cones
 
 allocatemem(10^9);
 \p 600 \\ realprecision, this real precision is necessary to compare the signs (+1 or -1) of each cone obtained below. 
@@ -62,8 +57,8 @@ return([N,P]);
 /*****************************************************************************/
 /*                                                                           */
 /*                Computing signed fundamental domains for                   */
-/*                 all non-totally complex number fields                     */
-/*                                                                           */
+/*                  non-totally complex number fields                        */
+/*                     (r1>0 and also rank r=r1+r2-1>0)                      */
 /*****************************************************************************/
 /*********************************************************************************************************************/
 /*** INPUT: bnf=bnfinit(polynomial) data of a number field K=Q(theta) given; U=totally positive units*/

@@ -11,9 +11,6 @@
 /* [FP96] Fukuda and Prodon, "Double description method revisited" (1996)  [MR1448924]  */
 
 
-allocatemem(10^9);
-\p 600     \\ realprecision = 616 significant digits (600 digits displayed).
-
 /************************************************************************************************************************************/
 /*****************************************************************************/
 /*                                                                           */
@@ -50,6 +47,7 @@ fudom(p)=
 d=bnfinit(p);       \\ data of the number field K obtained by Pari/gp
 U=topu(d); r=#U; 
 t1=getwalltime();t2=t1;
+if(d.r1==0, warning("Domain not calculated...The polynomial "p " must define a NON-TOTALLY COMPLEX NUMBER FIELD.");D=[],
 if(d.r2>0,L=signedfd2(U,d),L=signedfd1(U,d));  \\Signed fund'l domain obtained by the algorithm given in "SignedFundlDomain_V2.gp"
 a=#L[1];         \\ initial number of n-dimensional negative cones.
 b=#L[2];         \\ initial number of n-dimensional positive cones.
@@ -86,6 +84,7 @@ if(a>0,                    \\ means that there is an n-dimensional NEGATIVE cone
     D=[G, Co, vector(b1,j,P1[j][1])]; \\Co is a fundamental domain
     );
 if(a1==0,print1(" A true fund'l domain have been obtained with " b1 " semi-closed " d.r1+2*d.r2"-dimensional cones."), warning("the domain obtained is still signed, you need to change the function lista(r,5) by lista(r,l) taking some l>5."));
+);
 return(D); 
 }
 
@@ -101,60 +100,6 @@ F=fudom(L[#L]);
 write(Shintani,"",F,"\\");
 write(Shintani,"];");
 }
-
-/*********************************************************************************************************************************/
-/*****************************************************************************/
-/*                                                                           */
-/*    Algorithm to obtain fundamental domains from a signed one              */
-/*                  for a LIST number fields given.                          */
-/*                                                                           */
-/*****************************************************************************/
-/* Given a list of irreducible polynomials "p" of degree n (fixed), so for each "p" defines a number field K=bnfinit(p)=Q(theta) */
-
-/*** INPUT: A list "v" whose elements are of the form [irredu. polynomial p degree n, generators of the totally positive units group in K] */ 
-/*** In this routine we consider a limit time on seconds ("sec") to obtain a possible TRUE fundamental domain in each number field */
-
-/*** OUTPUT: Write an archive with a data for each (possible) fundamental domain of each number field in the form: */
-/*** for each number field we determine a tuple [G,t1,t2] */  
-/*** G=[p,d.disc,U,[#N0,#P0],[#N1,#P1],S,#S] */
-/*** where G were descrited above. */
-
-
-fundaldomains(v,sec)=
-{\\my(F,G,D,v,t,t1,V);
-write(Bfields1,"\\\\ Here we have a list [number fields,[fundamental units]] such that has NOT obtained its fundamental domain after of ", sec , " seconds.");
-write(Bfields1,"");
-write(timeFDs1, "\\\\ Each vector below is of the form:");
-write(timeFDs1, "\\\\ [j,[p,d.disc,U,[#N0,#P0],[#N1,#P1],S,#S],t1,t2], where");
-write(timeFDs1, "\\\\ p=irreduc. polynomial given; d.disc=discriminant of K; U=generators of the totally positive units group;");
-write(timeFDs1, "\\\\ [#N0,#P0]=[#negative cones initial,#positive cones initial];");
-write(timeFDs1, "\\\\ [#N1,#P1]=[#negative cones obtained,#positive cones obtained];");
-write(timeFDs1, "\\\\ S subset of "lista(r,5)" of units used to remove the common intersection between interiors of negative and positive cones; S=[] if #N1==0 which implies that such signed domain is a true one;");
-write(timeFDs1, "\\\\ #S=order of S;");
-write(timeFDs1, "\\\\ j=position on the list given; t1=time on milseconds to obtain true fundl domain.");
-write(timeFDs1, "\\\\ t2=time on milseconds to obtain a SIGNED fund'l domain established in SignedFundlDomain_V2.gp");
-write(timeFDs1, "");
-write(timeFDs1, "\\\\ Each fundamental domain is obtained in at most ", sec, " seconds.");
-write(timeFDs1, "");
-write(timeFDs1, "\\\\ Here we use the method-1: Weight ---> Lexicographic to order the units, see  function lista(r,l).");
-write(timeFDs1, "");
-ell=0; ell1=0;
-for(j=1,#v,
-   tiem1=getwalltime();
-   Fund=alarm(sec,fudom(v[j]));
-   if(type(Fund)=="t_ERROR",  write(Bfields1,"",v[j],"");ell=ell+1 , 
-      [Gru,Dom,tim,tim0]=Fund;
-      write(timeFDs1,"",[j,Gru,tim,tim0],""); ell1=ell1+1;
-     );
-   print1([[j],getwalltime()-tiem1]); 
- );
-write(Bfields1, "");
-write(Bfields1, "\\\\ For ", ell, " number fields such a TRUE domain has not been obtained.");
-write(timeFDs1, "");
-write(timeFDs1, "\\\\ A true domain has been obtained for ", ell1," number fields.");
-}
-
-
 
 
 /*****************************************************************************************************************************/
@@ -237,7 +182,7 @@ return(P);
 }
 
 
-/***************************************************************************************************************************************/
+/***********************************************************************************************************************************/
 /*****************************************************************************/
 /*                                                                           */
 /*    2. "HV" calculate an V-representation from its H-representation        */
@@ -650,7 +595,7 @@ p=d.pol;
 print1(" Adding boundary ...");
 for(j=1,#L,
     P=L[j];          \\ P=[R.repre, H.repre]                 
-    v=vector(#P[2],i,sign(conjvec(Mod(P[2][i],p))[1]));  
+    v=vector(#P[2],i,sign(conjvec(Mod(P[2][i],p))[1]));  \\here it is necessary that r1>0
     L[j]=concat(P,[v]);
     );
 print1(" Finished: ");
