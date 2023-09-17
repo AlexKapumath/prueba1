@@ -71,9 +71,9 @@ The second entry `F2` (i.e., F[2]) has the form
 
 which is a list of the T (semi-closed n-dimensional) cones in the Shintani domain. Here T=F[1][7] is the last entry of F1  described above. Each cone Cj is given by m linear inequalities (m depending on the cone) giving m closed or open half-spaces whose intersection is Cj. Thus, each Cj has the form  
 
-              [inq1,inq2,...,inqm]
+              [v1,v2,...,vm]
 
-where inqi=[w,1] or [w,-1] and w is an element of k (depending on  i and j). If w is followed by 1, then the corresponding (closed) half-space is the set of elements x of R^n with Trace(xw) >= 0. If w is followed by -1, then the corresponding (open) half-space is given by Trace(xw) > 0. Here Trace is the extension to R^n of the trace map from k to Q.
+where vi=[w,1] or [w,-1] and w is an element of k (depending on  i and j). If w is followed by 1, then the corresponding (closed) half-space is the set of elements x of R^n with Trace(xw) >= 0. If w is followed by -1, then the corresponding (open) half-space is given by Trace(xw) > 0. Here Trace is the extension to R^n of the trace map from k to Q.
 
    The third entry `F3` of F (i.e., F[3]) has the form  
 
