@@ -89,9 +89,7 @@ where CCj is the closure in R^n of the cone Cj in `F2`. Each closed cone CCj is 
    
 Where each folder `ShintaniKnr` contains the fundamental domains for number fields of degree `n` (for n=6,5,4,3,2) with rank of units `r=r1+r2-1` (for 1<= r <=5 such that r1>0)
 
-Each folder `ShintaniKnr` contains three files
-
-    `fieldsKnr.gp`; `ShintaniKnr.txt`; `ShintaniKnr-ML.sage`
+Each folder `ShintaniKnr` contains three files:  `fieldsKnr.gp` -- `ShintaniKnr.txt` -- `ShintaniKnr-ML.sage`
 
 Where:
     
