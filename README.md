@@ -83,7 +83,7 @@ where $CC_j$ is the closure in $\mathbb{R}^n$ of the cone $C_j$ in $F_2$. Each c
 
 3. In the folder `Examples` we show several examples of explicit Shintani domains obtained using the `fudom(p)` command described in item 2. Here there exists 9 subfolders
  
-$$S[2,1]:=\text{[ShintaniK21](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK21)}$$
+$$S[2,1]:=[ShintaniK21](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK21)$$
 
 `ShintaniK21`; `ShintaniK31`; `ShintaniK32`; `ShintaniK42`; `ShintaniK43`; `ShintaniK52`; `ShintaniK53`; `ShintaniK54`; `ShintaniK65`
 
