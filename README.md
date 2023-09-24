@@ -82,8 +82,10 @@ where $CC_j$ is the closure in $\mathbb{R}^n$ of the cone $C_j$ in $F_2$. Each c
 
 
 3. In the folder `Examples` we show several examples of explicit Shintani domains obtained using the `fudom(p)` command described in item 2. Here there exists 9 subfolders
-   
-$$S[2,1]:=ShintaniK21`; `ShintaniK31`; `ShintaniK32`; `ShintaniK42`; `ShintaniK43`; `ShintaniK52`; `ShintaniK53`; `ShintaniK54`; `ShintaniK65$$
+ 
+$$S[2,1]:=ShintaniK21$$
+
+`ShintaniK21`; `ShintaniK31`; `ShintaniK32`; `ShintaniK42`; `ShintaniK43`; `ShintaniK52`; `ShintaniK53`; `ShintaniK54`; `ShintaniK65`
 
 Each of these folders respectively contain fundamental domains for number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
 
