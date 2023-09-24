@@ -103,7 +103,7 @@ $S[6,5]:=$[ShintaniK65](https://github.com/acapunay-math/CompShintaniDom/tree/ma
 
 Each of these folders $S[n,r]$ respectively contain fundamental domains of some number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
 
-Each folder $S[n,r]$ contains three files, which we denote here as:`fieldsKnr.gp`, `ShintaniKnr.txt` and `ShintaniKnr-ML.sage` (Note the suffix $nr$ in the names of files: fieldsK$nr$.gp, ShintaniK$nr$.txt and ShintaniK$nr$-ML.sage, where $nr$ means $[n,r]$. For example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files: fields53.gp, ShintaniK53.txt and ShintaniK53-ML.sage)
+Each folder $S[n,r]$ contains three files, which we denote here as:`fieldsKnr.gp`, `ShintaniKnr.txt` and `ShintaniKnr-ML.sage` (Note the suffix $nr$ in the names of files: fieldsK $nr$ .gp, ShintaniK $nr$ .txt and ShintaniK $nr$ -ML.sage, where ``$nr$" means $[n,r]$. For example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files: fields53.gp, ShintaniK53.txt and ShintaniK53-ML.sage)
 
 
 Where:
