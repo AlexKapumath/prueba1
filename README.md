@@ -133,7 +133,7 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
 
 (4) On the other hand, the folder $S[3,1]$ contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
 
-(5) The remaining files: $S[4,2]$, $S[4,3]$, $S[5,2]$, $S[5,3]$, $S[5,4]$ and $S[6,5]$ contains some Shintani domains (for a list of polynomials given) of non-totally complex quartic, quintic and sextic fields.
+(5) The remaining files: $S[4,2]$, $S[4,3]$, $S[5,2]$, $S[5,3]$, $S[5,4]$ and $S[6,5]$ contains Shintani domains (for a list of polynomials given) of non-totally complex quartic, quintic and sextic fields.
 
 (6) The main bottleneck is that the number of cones on a Signed Domain grows (this is $3^{r_2}(n-1)!$ cones) when $n$ grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our implementation works well when $n\leq 5$ and sometimes in sextic fields $n=6$ when the negative cones in a Signed domains is small. However, it is possible trying to compute Shintani domains of (non-totally complex) number fields for $degree>6$ if you are using a good processor. 
 
