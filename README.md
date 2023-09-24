@@ -103,20 +103,20 @@ $S[6,5]:=$[ShintaniK65](https://github.com/acapunay-math/CompShintaniDom/tree/ma
 
 Each of these folders $S[n,r]$ respectively contain fundamental domains of some number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
 
-Each folder $S[n,r]$ contains three files:  `fieldsK[n,r].gp` -- `ShintaniK[n,r].txt` -- `ShintaniK[n,r]-ML.sage` (for example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files fields53.gp -- ShintaniK53.txt -- ShintaniK53-ML.sage)
+Each folder $S[n,r]$ contains three files, which we denote here as:`fieldsK[n,r].gp` -- `ShintaniK[n,r].txt` -- `ShintaniK[n,r]-ML.sage` (for example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files: fields53.gp -- ShintaniK53.txt -- ShintaniK53-ML.sage)
 
 
 Where:
     
-* The file `fieldsKnr.gp` contains a data of fields used to obtains Shintani domains which was download from https://www.lmfdb.org/
+* The file `fieldsK[n,r].gp` contains a data of fields used to obtains Shintani domains which was download from https://www.lmfdb.org/
 
-* The file `ShintaniKnr.txt` contains a data of explicit Shitani domains which can be read by Pari/GP using the command 
+* The file `ShintaniK[n,r].txt` contains a data of explicit Shitani domains which can be read by Pari/GP using the command 
 
-   `\r ShintaniKnr.txt`
+   `\r ShintaniKn,r.txt`
    
-  This returns a vector called `examples=[E1,E2,...,Eg]`, where each Ei=fudom(p) is a vector of size three which was described in item 2  with `p` an irreducible polynomial of degree `n` which defines a non-totally complex number field k. 
+  This returns a vector called $examples=[E_1,E_2,...,E_g]$, where each $E_i=fudom(p)$ is a vector of size three which was described in item 2  with $p$ an irreducible polynomial of degree $n$ which defines a non-totally complex number field $k$ with rank of units $r$.
 
-* The file `ShintaniKnr-ML.sage` can be read by SageMath using the command 
+* The file `ShintaniK[n,r]-ML.sage` can be read by SageMath using the command 
 
   `load('ShintaniKnr-ML.sage')`
 
@@ -125,15 +125,15 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
    
 ## SOME REMARKS: 
 
-(1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree n (using r1>0 and rank r=r1+r2-1>0).
+(1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree $n$ (using $r_1>0$ and rank $r=r_1+r_2-1>0$).
 
-(2) The fundamental domains in the folder `ShintanK21` correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
+(2) The fundamental domains in the folder $S[2,1]$ correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
 
-(3) And the folder `ShintaniK32` which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: [Real Cubic Shintani](https://www.sciencedirect.com/science/article/pii/S0022314X12000844)
+(3) And the folder $S[3,2]$ which correspond to Shintani domains for totally real cubic fields are also known, see for example Diaz y Diaz and Friedman's work: [Real Cubic Shintani](https://www.sciencedirect.com/science/article/pii/S0022314X12000844)
 
-(4) On the other hand, the folder `ShintaniK31` contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
+(4) On the other hand, the folder $S[3,1]$ contains Shintani domains for complex cubic number fields, this is consistent with a recently published work: [Complex Cubic Shintani](https://www.worldscientific.com/doi/abs/10.1142/S1793042123300016)
 
-(5) The remaining files: `ShintaniK42` - `ShintaniK43` - `ShintaniK52` - `ShintaniK53` - `ShintaniK54` - `ShintaniK65` contains Shintani domains (for a list of polynomials given) of non-totally complex `quartic`, `quintic` and `sextic` fields, which until now has not been considered of systemically.
+(5) The remaining files: $S[4,2]$, $S[4,3]$, $S[5,2]$, $S[5,3]$, $S[5,4]$ y $S[6,5]$ contains some Shintani domains (for a list of polynomials given) of non-totally complex quartic, quintic and sextic fields.
 
-(6) The main bottleneck is that the number of cones on a Signed Domain grows (this is `3^(r2)*(n-1)!` cones) when `n` grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our implementation works well when `n<=5` and sometimes in sextic fields `n=6` when the negative cones in a Signed domains is small. However, it is possible trying to compute Shintani domains of number fields for `degree>6` if you are using a good processor. 
+(6) The main bottleneck is that the number of cones on a Signed Domain grows (this is $3^(r2)*(n-1)!$ cones) when $n$ grows. This number of cones is the input in our main algorithm to obtain a Shintani domain, so our implementation works well when $n\leq 5$ and sometimes in sextic fields $n=6$ when the negative cones in a Signed domains is small. However, it is possible trying to compute Shintani domains of (non-totally complex) number fields for $degree>6$ if you are using a good processor. 
 
