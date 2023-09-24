@@ -35,11 +35,11 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
 
-     F=fudom(p);
+ `F=fudom(p);`
 
 return a Shintani fundamental domain with the following structure:
 
-     F=[F1,F2,F3];
+     $$F=[F1,F2,F3];$$
      
 The first entry `F1` (i.e., F[1]) has the form
 
