@@ -1,6 +1,6 @@
 ## Computing Shintani fundamental domains
 
-Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a NON-TOTALLY COMPLEX NUMBER FIELD. We also present some examples of Shintani domains in the folder `Examples`. This implementation is based in the manuscript:
+Here we give an algorithm (in Pari/GP) to obtain a TRUE fundamental domain from a SIGNED fundamental domain for the action of the totally positive units group of a NON-TOTALLY COMPLEX NUMBER FIELD. We also present some examples of Shintani domains in the folder [Examples](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples). This implementation is based in the manuscript:
 
 A.Capuñay, "COMPUTING SHINTANI DOMAINS" -- International Journal of Number Theory (2024)
 
@@ -81,7 +81,7 @@ where $CC_j$ is the closure in $\mathbb{R}^n$ of the cone $C_j$ in $F_2$. Each c
 
 
 
-3. In the folder `Examples` we show several examples of explicit Shintani domains obtained using the `fudom(p)` command described in item 2. Here there exists 9 subfolders
+3. In the folder [Examples](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples) we show several examples of explicit Shintani domains obtained using the `fudom(p)` command described in item 2. Here there exists 9 subfolders
  
 $S[2,1]:=$[ShintaniK21](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK21)
 
@@ -103,7 +103,7 @@ $S[6,5]:=$[ShintaniK65](https://github.com/acapunay-math/CompShintaniDom/tree/ma
 
 Each of these folders $S[n,r]$ respectively contain fundamental domains of some number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
 
-Each folder $S[n,r]$ contains three files, which we denote here as:`fieldsKnr.gp`, `ShintaniKnr.txt` and `ShintaniKnr-ML.sage` (Note the suffix $nr$ in the names of files fieldsKnr.gp, ShintaniKnr.txt and ShintaniKnr-ML.sage, where $nr$ means $[n,r]$. For example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files: fields53.gp, ShintaniK53.txt and ShintaniK53-ML.sage)
+Each folder $S[n,r]$ contains three files, which we denote here as:`fieldsKnr.gp`, `ShintaniKnr.txt` and `ShintaniKnr-ML.sage` (Note the suffix $nr$ in the names of these files, where $nr$ means $[n,r]$. For example, if $[n,r]=[5,3]$ then the folder $S[5,3]$ contains the files: fields53.gp, ShintaniK53.txt and ShintaniK53-ML.sage)
 
 
 Where:
