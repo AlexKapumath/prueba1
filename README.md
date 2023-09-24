@@ -87,11 +87,23 @@ $S[2,1]:=$[ShintaniK21](https://github.com/acapunay-math/CompShintaniDom/tree/ma
 
 $S[3,1]:=$[ShintaniK31](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK31)
 
-`ShintaniK21`; `ShintaniK31`; `ShintaniK32`; `ShintaniK42`; `ShintaniK43`; `ShintaniK52`; `ShintaniK53`; `ShintaniK54`; `ShintaniK65`
+$S[3,2]:=$[ShintaniK32](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK32)
 
-Each of these folders respectively contain fundamental domains for number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
+$S[4,2]:=$[ShintaniK42](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK42)
 
-Each folder `ShintaniKnr` contains three files:  `fieldsKnr.gp` -- `ShintaniKnr.txt` -- `ShintaniKnr-ML.sage`
+$S[4,3]:=$[ShintaniK43](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK43)
+
+$S[5,2]:=$[ShintaniK52](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK52)
+
+$S[5,3]:=$[ShintaniK53](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK53)
+
+$S[5,4]:=$[ShintaniK54](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK54)
+
+$S[6,5]:=$[ShintaniK65](https://github.com/acapunay-math/CompShintaniDom/tree/main/Examples/ShintaniK65)
+
+Each of these folders $S[n,r]$ respectively contain fundamental domains for number fields of degree $n$ for $n=2,3,4,5,6$ with rank of units $r=r_1+r_2-1$ for $r=1,2,3,4,5$ such that $r_1>0$.
+
+Each folder $S[n,r]$ contains three files:  `fieldsKnr.gp` -- `ShintaniKnr.txt` -- `ShintaniKnr-ML.sage`
 
 Where:
     
