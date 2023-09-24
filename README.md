@@ -43,7 +43,7 @@ return a Shintani fundamental domain with the following structure:
      
 The first entry $F_1$ (i.e., $F[1]$) has the form
 
- $$[t, p, reg, disc, [r1, r2], U, T]$$
+ $$[t, p, reg, disc, [r_1, r_2], U, T]$$
 
 with 
 
@@ -65,11 +65,11 @@ $T =$ number of semi-closed n-dimensional cones in the Shintani domain construct
 
 The second entry $F_2$ (i.e., $F[2]$) has the form
 
-    $$[C_1,C_2,...,C_T]$$
+$$[C_1,C_2,...,C_T]$$
 
 which is a list of the $T$ (semi-closed n-dimensional) cones in the Shintani domain. Here $T=F[1][7]$ is the last entry of $F_1$  described above. Each cone $C_j$ is given by $m$ linear inequalities ($m$ depending on the cone) giving $m$ closed or open half-spaces whose intersection is $C_j$. Thus, each $C_j$ has the form  
 
-    $$[v_1,v_2,...,v_m]$$
+$$[v_1,v_2,...,v_m]$$
 
 where $v_i=[w,1]$ or $[w,-1]$ and $w$ is an element of $k$ (depending on  $i$ and $j$). If $w$ is followed by $1$, then the corresponding (closed) half-space is the set of elements $x$ of $\mathbb{R}^n$ with $\text{Trace}(xw)\geq 0$. If $w$ is followed by $-1$, then the corresponding (open) half-space is given by $\text{Trace}(xw)>0$. Here Trace is the extension to $\mathbb{R}^n$ of the trace map from $k$ to $\mathbb{Q}$.
 
