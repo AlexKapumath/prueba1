@@ -36,7 +36,6 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
      ```bash 
      \r ShintaniDomain.gp
      ```
-
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
 
 ```bash
