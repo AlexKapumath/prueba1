@@ -134,7 +134,11 @@ this returns the same list of examples as the file `ShintaniKnr.txt` with the sa
    
 ## SOME REMARKS: 
 
-(1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command in Pari/GP:  `ShintExamples(L)` returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree $n$ (using $r_1>0$ and rank $r=r_1+r_2-1>0$).
+(1) After uploading files `SignedDomain.gp` and `ShintaniDomain.gp`, the command (Pari/GP)
+ ```bash
+ ShintExamples(L)
+ ```
+returns a file with a list of examples of the calculated Shintani domains, where L=vector of irreducible polynomials of degree $n$ (using $r_1>0$ and rank $r=r_1+r_2-1>0$).
 
 (2) The fundamental domains in the folder $S[2,1]$ correspond to totally real quadratic fields which are widely known by number theorists. See for example Borevich-Shafarevich's Book "Number theory" (Chapter 5, Section 1.2).
 
