@@ -39,9 +39,9 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
 
-       ```bash
-       F=fudom(p);
-       ```
+```bash
+F=fudom(p);
+```
 
 return a Shintani fundamental domain with the following structure:
 
