@@ -33,11 +33,15 @@ generators (or V-representation). For this we use the Fukuda-Prodon's paper:
 
 2. Using `SignedDomain.gp`, we give in the file `ShintaniDomain.gp` our main algorithm to find a true fundamental domain from a signed one. This can be read using 
 
-     `\r ShintaniDomain.gp`
+     ```bash 
+     \r ShintaniDomain.gp
+     ```
 
 So given as input an irreducible polynomial `p` (which defines a non-totally complex number field), the command in Pari/GP
 
- `F=fudom(p);`
+     ```bash
+     F=fudom(p);
+     ```
 
 return a Shintani fundamental domain with the following structure:
 
