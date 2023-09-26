@@ -117,13 +117,17 @@ Where:
 
 * The file `ShintaniKnr.txt` contains a data of explicit Shitani domains which can be read by Pari/GP using the command 
 
-   `\r ShintaniKnr.txt`
+   ```bash
+   \r ShintaniKnr.txt
+   ```
    
   This returns a vector called $examples=[E_1,E_2,...,E_g]$, where each $E_i=fudom(p)$ is a vector of size three which was described in item 2  with $p$ an irreducible polynomial of degree $n$ which defines a non-totally complex number field $k$ with rank of units $r$.
 
 * The file `ShintaniKnr-ML.sage` can be read by SageMath using the command 
 
-  `load('ShintaniKnr-ML.sage')`
+  ```bash
+  load('ShintaniKnr-ML.sage')
+  ```
 
 this returns the same list of examples as the file `ShintaniKnr.txt` with the same structure.
 
